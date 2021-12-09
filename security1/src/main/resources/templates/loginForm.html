@@ -1,18 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>로그인페이지</title>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Home</title>
 </head>
 <body>
-<h1>로그인 페이지</h1>
-<hr/>
-<!--Security가 action login을 낚아 채서 화면을 보여준다. -->
-<form action="/login" method="POST">
-    <input type="text" name="username" placeholder="Username"/><br/>
-    <input type="password" name="password" placeholder="password"/><br/>
-    <button>로그인</button>
-</form>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <hr/>
+    <!--Security가 action login을 낚아 채서 화면을 보여준다. -->
 
+    <form action="/login" method="POST">
+        아이디<input  type="text" name="username" placeholder="Username"/><br/>
+        비밀번호 <input type="password" name="password" placeholder="password"/><br/>
+        <button>로그인</button>
+    </form>
+    <form action="/joinForm" method="POST">
+        <button>회원가입</button>
+    </form>
+    <div th:replace="fragments/footer :: footer"/>
+</div>
+</div>
 </body>
 </html>

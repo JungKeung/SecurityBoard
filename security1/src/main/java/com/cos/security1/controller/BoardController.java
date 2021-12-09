@@ -1,5 +1,6 @@
 package com.cos.security1.controller;
 
+
 import com.cos.security1.model.Board;
 import com.cos.security1.repository.PagingRepository;
 import com.cos.security1.service.BoardService;
@@ -19,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 import java.util.List;
 
-
 @Controller
 @RequiredArgsConstructor
 @Transactional
@@ -31,7 +31,7 @@ public class BoardController {
 
     @GetMapping("/board")
     public String boardCreated(Model model){
-        model.addAttribute ( "boardForm", new BoardForm ());
+        model.addAttribute ( "boardForm", new BoardForm());
         return "board/createdBoard";
     }
 
