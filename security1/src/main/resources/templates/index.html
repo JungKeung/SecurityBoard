@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments/header :: header">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Home</title>
+</head>
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+
+
+    <div class="jumbotron">
+        <h1>Hello Board</h1>
+
+        <form action="/login" method="POST">
+        <p class="lead">로그인</p>
+        <input type="text" name="username" placeholder="Username"/><br/>
+        <input type="password" name="password" placeholder="password"/><br/>
+        <button>로그인</button>
+        </form>
+
+        <p class="lead">회원 화면</p>
+        <form action="/joinForm" method="POST">
+            <button class="btn btn-lg btn-secondary">회원가입</button>
+
+        </form>
+        <p class="lead">게시판 화면</p>
+
+        <a class="btn btn-lg btn-secondary" href="/board">게시판</a>
+        <a class="btn btn-lg btn-secondary" href="/board/list">게시판 목록</a>
+        </p>
+
+    </div>
+    <div th:replace="fragments/footer :: footer"/>
+</div>
+</body>
+</html>

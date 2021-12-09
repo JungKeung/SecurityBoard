@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<meta charset="UTF-8">
+<title>게시물 작성폼</title>
+<style>
+        .layout{
+            width : 500px;
+            margin : 0 auto;
+            margin-top : 40px;
+        }
+
+        .layout input {
+            width : 100%;
+            box-sizing : border-box
+        }
+
+        .layout textarea{
+            width : 100%;
+            margin-top : 10px;
+            min-height : 300px;
+        }
+
+</style>
+
+<body>
+<div class="layout">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <form th:action="@{/board/update/{id}(id = ${board.id})}" method="post">
+        <th>제목</th>
+        <input name="title" type="text" th:value="${board.title}">
+        <th>이메일</th>
+        <p th:text="${board.email}"></p>
+        <th>내용</th>
+        <textarea name="context" th:text="${board.context}"></textarea>
+        <button type="submit">수정</button>
+    </form>
+    <div th:replace="fragments/footer :: footer"/>
+</div>
+</body>
+</html>

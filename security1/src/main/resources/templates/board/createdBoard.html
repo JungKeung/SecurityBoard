@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<style>
+         .fieldError {
+         border-color: #bd2130;
+         }
+         .layout{
+            width : 500px;
+            margin : 0 auto;
+            margin-top : 10px;
+        }
+
+        .layout input {
+            width : 100%;
+            box-sizing : border-box
+        }
+
+        .layout textarea{
+            width : 100%;
+            margin-top : 10px;
+            min-height : 300px;
+        }
+
+</style>
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+
+    <form role="form" action="/board" th:object="${boardForm}" method="post">
+
+        <div class="layout">
+            <label th:for="title">제목</label>
+            <input type="text" th:field="*{title}" placeholder="제목를 입력하세요">
+        </div>
+
+        <div class="layout">
+            <label th:for="email">이메일</label>
+            <input type="email" th:field="*{email}" placeholder="이메일를 입력하세요">
+        </div>
+
+        <div class="layout">
+            <label th:for="context">내용</label>
+            <textarea type="text" th:field="*{context}" placeholder="내용를 입력하세요"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <br/>
+    <div th:replace="fragments/footer :: footer"/>
+</div> <!-- /container -->
+</body>
+</html>

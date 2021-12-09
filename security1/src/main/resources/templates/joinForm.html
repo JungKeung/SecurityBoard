@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<style>
+         .fieldError {
+         border-color: #bd2130;
+         }
+
+</style>
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+<hr/>
+    <form action="/join" method="POST">
+        <p>이름</p>
+        <input type="text" name="username" placeholder="이름작성해주세요"/><br/>
+        <p>비밀번호</p>
+        <input type="password" name="password" placeholder="비밀번호 작성해주세요"/><br/>
+        <p>이메일</p>
+        <input type="email" name="email" placeholder="이메일 작성해주세요"/><br/>
+        <button>회원가입</button>
+    </form>
+    <div th:replace="fragments/footer :: footer"/>
+</div>
+</body>
+</html>
