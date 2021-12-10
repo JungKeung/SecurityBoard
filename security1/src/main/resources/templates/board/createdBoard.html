@@ -35,8 +35,8 @@
         </div>
 
         <div class="layout">
-            <label th:for="email">이메일</label>
-            <input type="email" th:field="*{email}" placeholder="이메일를 입력하세요">
+            <th>아이디</th>
+            <p th:text="${#authentication.name}"> 아이디</p>
         </div>
 
         <div class="layout">

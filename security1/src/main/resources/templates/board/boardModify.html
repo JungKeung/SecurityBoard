@@ -29,8 +29,8 @@
     <form th:action="@{/board/update/{id}(id = ${board.id})}" method="post">
         <th>제목</th>
         <input name="title" type="text" th:value="${board.title}">
-        <th>이메일</th>
-        <p th:text="${board.email}"></p>
+        <th>아이디</th>
+        <p th:text="${#authentication.name}"> 아이디</p>
         <th>내용</th>
         <textarea name="context" th:text="${board.context}"></textarea>
         <button type="submit">수정</button>

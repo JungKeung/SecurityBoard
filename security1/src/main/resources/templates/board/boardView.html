@@ -23,8 +23,8 @@
 
     <th>제목</th>
     <h1 th:text="${board.title}">제목입니다.</h1>
-    <th>이메일</th>
-    <p th:text="${board.email}">내용이 들어갈 부분입니다.</p>
+    <th>아이디</th>
+    <p th:text="${#authentication.name}"> 아이디</p>
     <th>내용</th>
     <p th:text="${board.context}">내용이 들어갈 부분입니다.</p>
 

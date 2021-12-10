@@ -22,7 +22,7 @@
                 <td>
                     <a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}"></a>
                 </td>
-                <td th:text="${board.email}"></td>
+                <td th:text="${#authentication.name}"></td>
             </tr>
             </tbody>
         </table>
