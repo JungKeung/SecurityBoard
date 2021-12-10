@@ -34,7 +34,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/loginForm")
                 //.usernameParameter ("email")
                 .loginProcessingUrl ("/login") //login 주소가 호출이 되면 시큐리티가 낚아채서 대신 로그인을 진행해준다. 이렇게 되면 Controller 에 login을 따로 안만들어도 된다
-                .defaultSuccessUrl ("/"); //login 할시 ("/") 보내주지만 특정 페이지을 요청해서 로그인하면 특정 페이지로 이동시켜준다.
+                .defaultSuccessUrl ("/") //login 할시 ("/") 보내주지만 특정 페이지을 요청해서 로그인하면 특정 페이지로 이동시켜준다.
+                .and()
+                .logout () // 로그아웃 처리
+                .logoutUrl("/logout") //로그아웃 처리 URL
+                .logoutSuccessUrl ("/loginForm") //로그아웃 성공 후 이동페이지
+                .deleteCookies ("JSESSIONID", "remember-me"); //로그아웃 후 쿠키 삭제
 
 
     }

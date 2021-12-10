@@ -4,11 +4,16 @@ import com.cos.security1.model.User;
 import com.cos.security1.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
 @Controller //View 리턴
@@ -28,6 +33,11 @@ public class IndexController {
         return "user";
     }
 
+    @GetMapping("/logout")
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response){
+        new SecurityContextLogoutHandler ().logout (request,response, SecurityContextHolder.getContext().getAuthentication());
+        return "loginForm";
+    }
 
 
     //로그인 페이지 이동
