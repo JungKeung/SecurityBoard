@@ -7,14 +7,14 @@
 
     <a href="/"><h3 class="text-muted">Hello Board</h3></a>
     <!--  로그인한 상태라면 이름과, logout 버튼 출력      -->
-    <div text-align="right" >
+
         <div th:if="${#authorization.expr('isAuthenticated()')}">
-            <a href="/logout" th:href="@{/logout}">Logout</a>
+            <a style="float:right;" href="/logout" th:href="@{/logout}">Logout</a>
         </div>
         <!--  로그인한 상태가 아니라면 login 버튼 출력  -->
         <div th:unless="${#authorization.expr('isAuthenticated()')}">
-            <a href="#login" th:href="@{/loginForm}">Login</a>
+            <a style="float:right;" href="#login" th:href="@{/loginForm}">Login</a>
         </div>
-    </div>
+
 
 </div>
