@@ -7,33 +7,41 @@
 </head>
 <style>
 
-     .layout{
-        width : 500px;
-        margin : 0 auto;
-        margin-top : 40px;
-    }
+       .layout{
+            width : 500px;
+            margin : 0 auto;
+            margin-top : 40px;
+        }
+
+       .layout pre{
+            border: 1px solid #444444;
 
 
+        }
+       .layout p{
+            width : 100%;
+            margin-top : 10px;
+            min-height : 300px;
+            border: 1px solid black;
+       }
 
 
 </style>
 <body>
-<div th:replace="fragments/bodyHeader :: bodyHeader"/>
 <div class="layout">
-
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
     <th>제목</th>
-    <h1 th:text="${board.title}">제목입니다.</h1>
-    <th>아이디</th>
-    <p th:text="${#authentication.name}"> 아이디</p>
+    <pre th:text="${board.title}">제목입니다.</pre>
+    <th>이메일</th>
+    <pre th:text="${board.email}">이메일</pre>
     <th>내용</th>
     <p th:text="${board.context}">내용이 들어갈 부분입니다.</p>
-
+    <hr/>
     <a th:href="@{/board/list}">뒤로가기</a>
     <a th:href="@{/board/modify/{id}(id = ${board.id})}">수정</a>
     <a th:href="@{/board/delete(id=${board.id})}">글 삭제</a>
 
-
+    </div>
 </div>
-<div th:replace="fragments/footer :: footer"/>
 </body>
 </html>

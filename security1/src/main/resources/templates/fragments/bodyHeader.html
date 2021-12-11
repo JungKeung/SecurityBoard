@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:text-align="http://www.w3.org/1999/xhtml">
+
 <div class="header" th:fragment="bodyHeader">
     <ul class="nav nav-pills pull-right">
     </ul>
 
     <a href="/"><h3 class="text-muted">Hello Board</h3></a>
-
     <!--  로그인한 상태라면 이름과, logout 버튼 출력      -->
-    <div th:if="${#authorization.expr('isAuthenticated()')}">
-
-        <a href="/logout" th:href="@{/logout}">Logout</a>
-    </div>
-    <!--  로그인한 상태가 아니라면 login 버튼 출력  -->  
-    <div th:unless="${#authorization.expr('isAuthenticated()')}">
-        <a href="#login" th:href="@{/loginForm}">Login</a>
+    <div text-align="right" >
+        <div th:if="${#authorization.expr('isAuthenticated()')}">
+            <a href="/logout" th:href="@{/logout}">Logout</a>
+        </div>
+        <!--  로그인한 상태가 아니라면 login 버튼 출력  -->
+        <div th:unless="${#authorization.expr('isAuthenticated()')}">
+            <a href="#login" th:href="@{/loginForm}">Login</a>
+        </div>
     </div>
 
 </div>
