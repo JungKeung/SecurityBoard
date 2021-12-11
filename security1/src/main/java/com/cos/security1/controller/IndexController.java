@@ -25,7 +25,7 @@ public class IndexController {
 
     @GetMapping({"","/"})
     public String index(){
-        return "index";
+        return "redirect:board/list";
     }
 
     @GetMapping("/user")
@@ -64,7 +64,7 @@ public class IndexController {
         //인코딩한 암호화을 DB에 넣기
         user.setPassword(encPassword);
         userRepository.save(user); //회원가입 잘됨. 이렇게 하면 비밀번호 노출되어 시큐리티로 로그인 안됨
-        return "redirect:/";
+        return "redirect:board/list";
     }
 
     @Secured ("ROLE_ADMIN") // 특정메서드에 권한을 걸고 싶을때 사용

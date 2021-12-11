@@ -3,24 +3,59 @@
 <head th:replace="fragments/header :: header">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Home</title>
+    <h1>로그인 페이지</h1>
+    </br>
+    </br>
 </head>
+<style>
+    h1{
+        text-align: center;
+    }
+    #sform {
+        text-align: center;
+    }
+
+
+</style>
 <body>
 <div class="container">
-    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <div id="sform">
 
-    <!--Security가 action login을 낚아 채서 화면을 보여준다. -->
 
-    <form action="/login" method="POST">
-        아이디<input  type="text" name="username" placeholder="Username"/><br/>
-        비밀번호 <input type="password" name="password" placeholder="password"/><br/>
-        <button>로그인</button>
-    </form>
-    <form action="/joinForm" method="POST">
-        <button>회원가입</button>
-    </form>
+        <!--Security가 action login을 낚아 채서 화면을 보여준다. -->
 
+        <form class="form-inline center" action="/login" method="POST">
+            <input class="form-control" type="text" name="username" id="LoginId" value="" placeholder="아이디"/><br/>
+            <input class="form-control" type="password" name="password" id="LoginPassword" value="" placeholder="비밀번호"/><br/>
+            <button id="LoginBtn">로그인</button>
+        </form>
+        <br/>
+        <form class="form-inline center" action="/joinForm" method="POST">
+            <button>회원가입</button>
+        </form>
+
+
+    </div>
     <div th:replace="fragments/footer :: footer"/>
 </div>
 </div>
 </body>
 </html>
+<script>
+    document.getElementById("LoginBtn").onclick = function () {
+        var UserId = document.getElementById("LoginId").value;
+        var UserPwd = document.getElementById("LoginPassword").value;
+
+
+        if (UserId === null || UserId === '') {
+            alert("아이디를 입력하세요");
+            return false;
+        }
+        if (UserPwd === null || UserPwd === '') {
+            alert("비밀번호를 입력하세요");
+            return false;
+        } else {
+            return;
+        }
+    }
+</script>

@@ -47,7 +47,7 @@ public class BoardController {
         board.setEmail (form.getEmail ());
         board.setContext (form.getContext());
         boardService.join (board);
-        return "redirect:/";
+        return "redirect:board/list";
 
     }
 
