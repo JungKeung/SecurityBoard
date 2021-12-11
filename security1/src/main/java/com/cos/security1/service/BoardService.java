@@ -1,8 +1,10 @@
 package com.cos.security1.service;
 
 import com.cos.security1.model.Board;
+import com.cos.security1.model.User;
 import com.cos.security1.repository.BoardRepository;
 import com.cos.security1.repository.PagingRepository;
+import com.cos.security1.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +20,7 @@ public class BoardService {
 
     private final BoardRepository boardRepository;
     private final PagingRepository pagingRepository;
+    private final UserRepository userRepository;
 
 
     @Transactional
@@ -35,6 +38,8 @@ public class BoardService {
 
         return pagingRepository.findById ( id ).get ();
     }
+
+
 
     //게시글 리스트 처리
     public Page<Board> boardList(Pageable pageable) {

@@ -2,7 +2,9 @@ package com.cos.security1.controller;
 
 
 import com.cos.security1.model.Board;
+import com.cos.security1.model.User;
 import com.cos.security1.repository.PagingRepository;
+import com.cos.security1.repository.UserRepository;
 import com.cos.security1.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -13,10 +15,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -27,6 +28,8 @@ public class BoardController {
 
     private final BoardService boardService;
     private final PagingRepository pagingRepository;
+
+
 
 
     @GetMapping("/board")
@@ -44,7 +47,6 @@ public class BoardController {
 
         Board board = new Board() ;
         board.setTitle (form.getTitle ());
-        board.setEmail (form.getEmail ());
         board.setContext (form.getContext());
         boardService.join (board);
         return "redirect:board/list";
@@ -57,6 +59,7 @@ public class BoardController {
     public String boardView(Model model, Integer id){
 
         model.addAttribute ("board", boardService.boardView (id));
+
         return "board/boardView";
     }
 

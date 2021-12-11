@@ -1,16 +1,16 @@
 package com.cos.security1.model;
 
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
 
-
+@ToString
 @Getter @Setter
 @Entity
 public class Board {
@@ -18,7 +18,7 @@ public class Board {
     @Id @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "board_id")
     private Integer id;
-
+    private String username; // 회원아이디 = 게시글 작성자
 
     private String email;
     private String title;
@@ -30,12 +30,7 @@ public class Board {
     @UpdateTimestamp
     private Date UpdateDate;
 
-    @Builder
-    public Board() {
-        this.id = id;
-        this.email = email;
-        this.title = title;
-        this.context = context;
-
-    }
+    @ManyToOne
+    @JoinColumn(name="User_Id")
+    private User user;
 }

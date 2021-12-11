@@ -37,17 +37,14 @@
     <form role="form" action="/board" th:object="${boardForm}" method="post">
 
         <div class="layout">
-            <label th:for="title">제목</label>
+            <label th:for="title"></label>
             <input type="text" th:field="*{title}" placeholder="제목를 입력하세요">
         </div>
 
-        <div class="layout">
-            <label th:for="email">이메일</label>
-            <input type="text" th:field="*{email}" placeholder="이메일를 입력하세요">
-        </div>
+
 
         <div class="layout">
-            <label th:for="context">내용</label>
+            <label th:for="context"></label>
             <textarea type="text" th:field="*{context}" placeholder="내용를 입력하세요"></textarea>
         </div>
 

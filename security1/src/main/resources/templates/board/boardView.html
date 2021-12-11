@@ -25,21 +25,22 @@
             border: 1px solid black;
        }
 
-
+       .layout a{
+            padding-left: 5px;
+            padding-right: 5px;
+       }
 </style>
 <body>
 <div class="layout">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-    <th>제목</th>
+    <br/>
     <pre th:text="${board.title}">제목입니다.</pre>
-    <th>이메일</th>
-    <pre th:text="${board.email}">이메일</pre>
-    <th>내용</th>
+
     <p th:text="${board.context}">내용이 들어갈 부분입니다.</p>
-    <hr/>
-    <a th:href="@{/board/list}">뒤로가기</a>
-    <a th:href="@{/board/modify/{id}(id = ${board.id})}">수정</a>
-    <a th:href="@{/board/delete(id=${board.id})}">글 삭제</a>
+
+
+    <a style="float:right;" th:href="@{/board/modify/{id}(id = ${board.id})}">수정 </a>
+    <a style="float:right;" th:href="@{/board/delete(id=${board.id})}"> 글 삭제</a>
 
     </div>
 </div>

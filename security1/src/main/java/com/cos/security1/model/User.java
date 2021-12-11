@@ -4,18 +4,18 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter @Setter
 public class User {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="User_Id")
     private int id;
     @NotNull
     private String username;
@@ -27,4 +27,7 @@ public class User {
     private String role; //ROLE_USER,ROLE_ADMIN
     @CreationTimestamp
     private Timestamp createDate;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private List<Board> boardList = new ArrayList<> ();
 }
