@@ -59,7 +59,7 @@ public class BoardController {
 
     @Transactional
     @GetMapping("/board/view")
-    public String boardView(Model model, Long id){
+    public String boardView(Board board, Model model, Long id){
 
         model.addAttribute ("board", boardService.boardView (id));
 

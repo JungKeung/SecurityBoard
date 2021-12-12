@@ -59,10 +59,13 @@ public class IndexController {
         user.setRole("ROLE_USER");
         //기존 패스워드를 인코딩하여 암호화
         String rawPassword = user.getPassword ();
+        String RePassword = user.getRePassword ();
         //인코딩을 통한 암호화
         String encPassword = bCryptPasswordEncoder.encode(rawPassword);
+        String ReEncPassword = bCryptPasswordEncoder.encode (RePassword);
         //인코딩한 암호화을 DB에 넣기
         user.setPassword(encPassword);
+        user.setPassword (ReEncPassword);
         userRepository.save(user); //회원가입 잘됨. 이렇게 하면 비밀번호 노출되어 시큐리티로 로그인 안됨
         return "redirect:board/list";
     }
