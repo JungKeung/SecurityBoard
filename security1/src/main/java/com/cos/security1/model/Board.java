@@ -1,6 +1,7 @@
 package com.cos.security1.model;
 
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,13 +14,11 @@ import java.util.Date;
 @ToString
 @Getter @Setter
 @Entity
+@Data
 public class Board {
 
     @Id @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name = "board_id")
-    private Integer id;
-    private String username; // 회원아이디 = 게시글 작성자
-
+    private Long id;
     private String email;
     private String title;
     private String context;
@@ -31,6 +30,6 @@ public class Board {
     private Date UpdateDate;
 
     @ManyToOne
-    @JoinColumn(name="User_Id")
+    @JoinColumn(name = "user_id")
     private User user;
 }

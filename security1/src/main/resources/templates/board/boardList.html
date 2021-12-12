@@ -13,6 +13,8 @@
                 <th>번호</th>
                 <th>제목</th>
                 <th>작성자</th>
+                <th>작성일</th>
+
             </tr>
             </thead>
 
@@ -23,9 +25,9 @@
                     <a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}"></a>
                 </td>
               <!--  <td th:text="${#authentication.name}"></td> -->
-                <td th:text="${#authentication.name}"></td>
-
+                <td th:text="${board.user.username}"></td>
             </tr>
+
             </tbody>
         </table>
         <input onclick="location.href='/board'" type="button" class="btn" name="btn" value="글쓰기" style="float:right;">

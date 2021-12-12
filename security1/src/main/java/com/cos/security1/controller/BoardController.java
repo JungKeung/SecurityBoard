@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -28,6 +29,7 @@ public class BoardController {
 
     private final BoardService boardService;
     private final PagingRepository pagingRepository;
+    private final UserRepository userRepository;
 
 
 
@@ -39,7 +41,7 @@ public class BoardController {
     }
 
     @PostMapping("/board")
-    public String boardCreate(@Valid BoardForm form, BindingResult result){
+    public String boardCreate(@Valid BoardForm form, BindingResult result, Authentication authentication){
 
         if (result.hasErrors()) {
             return "board/createdBoard";
@@ -47,8 +49,9 @@ public class BoardController {
 
         Board board = new Board() ;
         board.setTitle (form.getTitle ());
+        String username = authentication.getName ();
         board.setContext (form.getContext());
-        boardService.join (board);
+        boardService.save (username, board);
         return "redirect:board/list";
 
     }
@@ -56,7 +59,7 @@ public class BoardController {
 
     @Transactional
     @GetMapping("/board/view")
-    public String boardView(Model model, Integer id){
+    public String boardView(Model model, Long id){
 
         model.addAttribute ("board", boardService.boardView (id));
 
@@ -66,7 +69,7 @@ public class BoardController {
     //데이터 글 가져오기
     @GetMapping("/board/list")
     public String boardList(Model model,@PageableDefault(page = 0, size =10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable
-            ,String searchKeyword){
+            ,String searchKeyword, User user){
         List<Board> board = boardService.findMembers ();
         Page<Board> list = null;
 
@@ -80,6 +83,7 @@ public class BoardController {
         int startPage = Math.max(nowPage -4, 1);
         int endPage = Math.min(nowPage + 5 , list.getTotalPages ());
 
+
         model.addAttribute ("board", board);
         model.addAttribute ( "list", list);
         model.addAttribute ( "nowPage", nowPage );
@@ -91,14 +95,14 @@ public class BoardController {
     }
 
     @GetMapping("/board/modify/{id}")
-    public String boardModify(@PathVariable("id") Integer id, Model model){
+    public String boardModify(@PathVariable("id") Long id, Model model){
 
         model.addAttribute ( "board", boardService.boardView(id));
         return  "board/boardModify";
     }
 
     @PostMapping("board/update/{id}")
-    public String boardUpdate(@PathVariable("id") Integer id, Board board) throws  Exception{
+    public String boardUpdate(@PathVariable("id") Long id, Board board) throws  Exception{
 
         Board boardTemp = boardService.boardView(id);
         boardTemp.setTitle (board.getTitle());
@@ -112,7 +116,7 @@ public class BoardController {
 
     @Transactional
     @GetMapping("/board/delete")
-    public String boardDelete(Integer id){
+    public String boardDelete(Long id){
         pagingRepository.deleteById(id);
         return "redirect:/board/list";
     }

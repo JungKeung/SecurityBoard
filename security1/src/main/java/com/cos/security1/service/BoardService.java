@@ -22,9 +22,14 @@ public class BoardService {
     private final PagingRepository pagingRepository;
     private final UserRepository userRepository;
 
+    public Board save(String username, Board board){
+        User user = userRepository.findByUsername ( username );
+        board.setUser(user);
+        return boardRepository.save(board);
+    }
 
     @Transactional
-    public Integer join(Board board) {
+    public Long join(Board board) {
         boardRepository.save ( board );
         return board.getId ();
     }
@@ -34,7 +39,7 @@ public class BoardService {
     }
 
     @Transactional
-    public Board boardView(Integer id) {
+    public Board boardView(Long id) {
 
         return pagingRepository.findById ( id ).get ();
     }
@@ -53,7 +58,7 @@ public class BoardService {
     }
 
     //특정 게시글 삭제
-    public void boardDelete(Integer id) {
+    public void boardDelete(Long id) {
 
         pagingRepository.deleteById ( id );
     }
