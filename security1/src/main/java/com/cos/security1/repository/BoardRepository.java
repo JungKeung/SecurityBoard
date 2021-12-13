@@ -13,18 +13,13 @@ public class BoardRepository {
 
     private final EntityManager em;
 
+    //게시글 저장
     public Board save(Board board){
         em.persist (board);
         return board;
     }
-    public Board findOne(Integer id){
-        return em.find(Board.class, id);
-    }
 
-    public Board findById(Integer id) {
-        return em.find(Board.class, id);
-    }
-
+    // 게시글 리스트 가져오기
     public List<Board> findAll(){
         return em.createQuery ( "select m from Board m", Board.class )
                 .getResultList ();

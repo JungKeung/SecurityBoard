@@ -30,7 +30,7 @@
 <body>
 <div class="layout">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-    <form th:action="@{/board/update/{id}(id = ${board.id})}" method="post">
+    <form th:action="@{/board/modify/{id}(id = ${board.id})}" method="post">
         <th>제목</th>
         <input name="title" type="text" th:value="${board.title}">
 
