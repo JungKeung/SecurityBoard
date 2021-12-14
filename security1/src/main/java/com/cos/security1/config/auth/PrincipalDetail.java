@@ -42,7 +42,7 @@ public class PrincipalDetail implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return user.getEmail ();
     }
 
     //계정 완료되었는지

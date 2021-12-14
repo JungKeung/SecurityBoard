@@ -19,14 +19,14 @@
         <hr/>
         <form class="form-inline center" action="/join" method="POST">
 
-            <input type="text" name="username" id="UserId" value="" placeholder="아이디 작성해주세요"/><br/>
+            <input type="email" name="email" id="UserEmail" value="" placeholder="이메일 작성"/><br/>
 
             </br>
-            <input type="password" name="password" id="UserPw" value="" placeholder="비밀번호 작성해주세요"/><br/>
+            <input type="password" name="password" id="UserPw" value="" placeholder="비밀번호 작성"/><br/>
             </br>
-            <input type="password" name="RePassword" id="UserRePw" value="" placeholder="2차 비밀번호 작성해주세요"/><br/>
+            <input type="password" name="RePassword" id="UserRePw" value="" placeholder="비밀번호 재확인"/><br/>
             </br>
-            <input type="email" name="email" placeholder="이메일 작성해주세요"/><br/>
+            <input type="text" name="nickname" placeholder="닉네임 작성"/><br/>
             </br>
             <button id="JoinBtn">회원가입</button>
         </form>
@@ -35,34 +35,4 @@
 </div>
 </body>
 </html>
-<script>
-    document.getElementById("JoinBtn").onclick = function () {
-        var UserId = document.getElementById("UserId").value;
-        var UserPwd = document.getElementById("UserPw").value;
-        var UserRePwd = document.getElementById("UserRePw").value;
-
-
-        if (UserId === null || UserId === '') {
-            alert("아이디를 입력하세요");
-            return false;
-        }
-        if (UserPwd === null || UserPwd === '') {
-            alert("비밀번호를 입력하세요");
-            return false;
-        }
-        if (UserRePwd === null || UserRePwd === '') {
-            alert("2차비밀번호를 입력하세요");
-            return false;
-        }
-
-        if (!(UserPwd === UserRePwd)) {
-            alert("비밀번호가 같지 않습니다");
-
-            return false;
-        } else {
-            return;
-        }
-    }
-
-
-</script>
+<script src="/js/UserJoin.js"></script>

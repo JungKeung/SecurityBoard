@@ -47,9 +47,9 @@ public class BoardController {
 
         Board board = new Board() ;
         board.setTitle (form.getTitle ());
-        String username = authentication.getName ();
+        String email = authentication.getName ();
         board.setContext (form.getContext());
-        boardService.save (username, board);
+        boardService.created (email, board);
 
         return "redirect:board/list";
 

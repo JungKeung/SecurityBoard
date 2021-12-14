@@ -22,8 +22,8 @@ public class BoardService {
     private final UserRepository userRepository;
 
     //게시글 저장
-    public Board save(String username, Board board){
-        User user = userRepository.findByUsername ( username );
+    public Board created(String email, Board board){
+        User user = userRepository.findByEmail ( email );
         board.setUser(user);
         return boardRepository.save(board);
     }

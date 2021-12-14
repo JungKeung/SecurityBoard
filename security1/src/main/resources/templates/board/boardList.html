@@ -5,12 +5,18 @@
 <body>
 <div class="container">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <form th:action="@{/board/list}" method="get">
+        <input type="text" name="searchKeyword" placeholder="제목를 검색해주세요">
+        <button type="submit">검색</button>
+
+    </form>
+    <br/>
+    <br/>
     <div>
         <table class="table table-striped">
 
             <thead>
             <tr>
-                <th>번호</th>
                 <th>제목</th>
                 <th>작성자</th>
                 <th>작성일</th>
@@ -20,18 +26,20 @@
 
             <tbody>
             <tr th:each="board : ${list}">
-                <td th:text="${board.id}"></td>
                 <td>
                     <a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}"></a>
                 </td>
-              <!--  <td th:text="${#authentication.name}"></td> -->
-                <td th:text="${board.user.username}"></td>
-                <td th:text="${#dates.format(board.CreatedDate, 'yyyy-MM-dd')}"></td>
+                <!--  <td th:text="${#authentication.name}"></td> -->
+                <td th:text="${board.user.nickname}"></td>
+                <td th:text="${#dates.format(board.CreatedDate, 'yyyy-MM-dd HH:mm')}"></td>
             </tr>
 
             </tbody>
         </table>
-        <input onclick="location.href='/board'" type="button" class="btn" name="btn" value="글쓰기" style="float:right;">
+
+        <form th:action="@{/board}" method="get">
+            <button type="submit" style="float:right;">글쓰기</button>
+        </form>
 
         <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
             <a th:if="${page != nowPage}"
@@ -39,11 +47,7 @@
                th:text="${page}"></a>
             <strong th:if="${page == nowPage}" th:text="${page}" style="color: red"></strong>
         </th:block>
-        <form th:action="@{/board/list}" method="get">
-            <input type="text" name="searchKeyword">
-            <button type="submit">검색</button>
 
-        </form>
     </div>
     <div th:replace="fragments/footer :: footer"/>
 </div>
