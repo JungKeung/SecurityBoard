@@ -57,18 +57,18 @@ public class BoardController {
 
 
     // 글 상세페이지 가져오기
-    @GetMapping("/board/view")
-    public String boardView(Board board, Model model, Long id){
+    @GetMapping("/board/Detail")
+    public String boardDetail(Board board, Model model, Long id){
 
-        model.addAttribute ("board", boardService.boardView (id));
+        model.addAttribute ("board", boardService.boardDetail (id));
 
-        return "board/boardView";
+        return "board/boardDetail ";
     }
     // 글 수정 화면 페이지
     @GetMapping("/board/modify/{id}")
     public String boardModify(@PathVariable("id") Long id, Model model){
 
-        model.addAttribute ( "board", boardService.boardView(id));
+        model.addAttribute ( "board", boardService.boardDetail(id));
         return  "board/boardModify";
     }
 
@@ -76,7 +76,7 @@ public class BoardController {
     @PostMapping("board/modify/{id}") //@PathVariable url에서 각 구분자에 들어오는 값 처리
     public String boardUpdate(@PathVariable("id") Long id, Board board) throws  Exception{
 
-        Board boardTemp = boardService.boardView(id);
+        Board boardTemp = boardService.boardDetail(id);
         boardTemp.setTitle (board.getTitle());
         boardTemp.setContext (board.getContext());
 

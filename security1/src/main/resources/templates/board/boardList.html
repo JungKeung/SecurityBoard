@@ -1,10 +1,37 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header"/>
+<style>
+    table, td, th {
+        border : 1px solid black;
+        border-collapse : collapse;
+    }
 
+    th, td {
+        text-align: center;
+    }
+
+
+</style>
 <body>
 <div class="container">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <!--  로그인한 상태라면 이름과, logout 버튼 출력      -->
+
+    <div th:if="${#authorization.expr('isAuthenticated()')}">
+        <form th:action="@{/logout}" method="get" style="float:right;">
+            <button type="submit " class="btn btn-primary">로그아웃</button>
+        </form>
+
+    </div>
+    <!--  로그인한 상태가 아니라면 login 버튼 출력  -->
+    <div th:unless="${#authorization.expr('isAuthenticated()')}">
+        <form th:action="@{/loginForm}" method="get" style="float:right;">
+            <button type="submit" class="btn btn-primary">로그인</button>
+        </form>
+    </div>
+
+
     <form th:action="@{/board/list}" method="get">
         <input type="text" name="searchKeyword" placeholder="제목를 검색해주세요">
         <button type="submit">검색</button>
@@ -27,7 +54,7 @@
             <tbody>
             <tr th:each="board : ${list}">
                 <td>
-                    <a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}"></a>
+                    <a th:text="${board.title}" th:href="@{/board/Detail(id=${board.id})}"></a>
                 </td>
                 <!--  <td th:text="${#authentication.name}"></td> -->
                 <td th:text="${board.user.nickname}"></td>
@@ -38,7 +65,7 @@
         </table>
 
         <form th:action="@{/board}" method="get">
-            <button type="submit" style="float:right;">글쓰기</button>
+            <button type="submit" class="btn btn-primary" style="float:right;">글쓰기</button>
         </form>
 
         <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">

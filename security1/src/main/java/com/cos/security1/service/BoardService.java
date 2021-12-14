@@ -40,7 +40,7 @@ public class BoardService {
     }
 
     //게시글 화면 보여주기
-    public Board boardView(Long id) {
+    public Board boardDetail (Long id) {
         return pagingRepository.findById(id).get();
     }
 

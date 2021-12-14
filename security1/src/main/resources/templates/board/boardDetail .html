@@ -13,8 +13,8 @@
             margin-top : 40px;
         }
 
-       .layout pre{
-            border: 1px solid #444444;
+       .layout h2 {
+
 
 
         }
@@ -22,27 +22,37 @@
             width : 100%;
             margin-top : 10px;
             min-height : 300px;
-            border: 1px solid black;
+
        }
 
-       .layout a{
-            padding-left: 5px;
-            padding-right: 5px;
+       .layout button{
+             margin-left:15px;
+       }
+
+       .layout ta {
+            margin-left:370px;
        }
 </style>
 <body>
 <div class="layout">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-    <br/>
-    <pre th:text="${board.title}">제목입니다.</pre>
+    <ta th:text="${#dates.format(board.CreatedDate, 'yyyy-MM-dd HH:mm')}"></ta>
+
+    <h2 th:text="${board.title}">제목입니다.</h2>
+    <hr style="red"/>
 
     <p th:text="${board.context}">내용이 들어갈 부분입니다.</p>
 
 
-    <a style="float:right;" th:href="@{/board/modify/{id}(id = ${board.id})}">수정 </a>
-    <a style="float:right;" th:href="@{/board/delete(id=${board.id})}"> 글 삭제</a>
+    <form th:action="@{/board/modify/{id}(id = ${board.id})}" style="float:right;">
+        <button type="submit " class="btn btn-primary">수정</button>
+    </form>
 
-    </div>
+    <form th:action="@{/board/delete(id=${board.id})}" style="float:right;">
+        <button type="submit " class="btn btn-primary">삭제</button>
+    </form>
+
+</div>
 </div>
 </body>
 </html>
