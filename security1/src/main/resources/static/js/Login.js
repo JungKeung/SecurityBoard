@@ -1,9 +1,9 @@
 document.getElementById("LoginBtn").onclick = function () {
-        var UserId = document.getElementById("LoginId").value;
+        var LoginEmail = document.getElementById("LoginId").value;
         var UserPwd = document.getElementById("LoginPassword").value;
 
 
-        if (UserId === null || UserId === '') {
+        if (LoginEmail === null || LoginEmail === '') {
             alert("아이디를 입력하세요");
             return false;
         }

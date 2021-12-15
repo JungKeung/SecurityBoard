@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header"/>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 <style>
          .fieldError {
             border-color: #bd2130;
@@ -20,19 +22,25 @@
         <form class="form-inline center" action="/join" method="POST">
 
             <input type="email" name="email" id="UserEmail" value="" placeholder="이메일 작성"/><br/>
-
+            </br>
+            <input type="text" name="nickname" id="UserNickName" value="" placeholder="닉네임 작성"/><br/>
             </br>
             <input type="password" name="password" id="UserPw" value="" placeholder="비밀번호 작성"/><br/>
             </br>
             <input type="password" name="RePassword" id="UserRePw" value="" placeholder="비밀번호 재확인"/><br/>
             </br>
-            <input type="text" name="nickname" placeholder="닉네임 작성"/><br/>
-            </br>
-            <button class="btn btn-primary" id="JoinBtn" >회원가입</button>
+
+            <button class="btn btn-primary" id="JoinBtn"  onclick="chkPw()" >회원가입</button>
         </form>
     </div>
     <div th:replace="fragments/footer :: footer"/>
 </div>
+
 </body>
 </html>
+<script>
+    $("#UserPw").keydown(function(e) {
+        alert(e.keyCode);
+    });
+</script>
 <script src="/js/UserJoin.js"></script>
