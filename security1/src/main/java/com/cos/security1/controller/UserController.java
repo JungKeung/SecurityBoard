@@ -2,15 +2,16 @@ package com.cos.security1.controller;
 
 import com.cos.security1.model.User;
 import com.cos.security1.repository.UserRepository;
+import com.cos.security1.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.annotation.Secured;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +23,7 @@ public class UserController {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final UserService userService;
 
     //메인 화면 board/list
     @GetMapping({"","/"})
@@ -67,6 +69,9 @@ public class UserController {
     }
 
 
-
+    @GetMapping("/user-nicknames/{nickname}/exists")
+    public ResponseEntity<String> checkNicknameDuplicate(@PathVariable String nickname){
+        return ResponseEntity.ok(userService.checkNicknameDuplicate(nickname));
+    }
 
 }

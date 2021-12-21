@@ -21,22 +21,23 @@
         <hr/>
         <form class="form-inline center"  onsubmit="emailCheck();" action="/join" method="POST">
 
-            <input type="email" name="email" id="UserEmail" class="focus-email"   value="" placeholder="이메일 작성"/><br/>
+            <!--이메일 -->
+            <input type="email" name="email" id="UserEmail" class="focus-email" value="" placeholder="이메일 작성" style="text-align:center"/> <button>이메일 중복</button> <br/>
             <span id="Email_div" style="color:red;" >올바른 이메일 형식이 아닙니다.</span><br/>
             <label onclick="document.getElementById('focus-email').focus()"></label>
-            </br>
 
-            <input type="text" name="nickname" id="UserNickName"  class="focus-nickname" value="" placeholder="닉네임 작성"/><br/>
+            <!--닉네임 -->
+            <input type="text" name="nickname" id="UserNickName"  class="focus-nickname" value="" placeholder="닉네임 작성" style="text-align:center"/> <button>닉네임 중복</button> <br/>
             <span id="Nickname_div"  style="color:red;">올바른 닉네임 형식이 아닙니다.</span><br/>
             <label onclick="document.getElementById('focus-nickname').focus()"></label>
-            </br>
 
-            <input type="password" name="password" id="UserPw" class="focus-password" value="" placeholder="비밀번호 작성"/><br/>
+            <!--1차 비밀번호 -->
+            <input type="password" name="password" id="UserPw" class="focus-password" value="" placeholder="비밀번호 작성" style="text-align:center"/><br/>
             <span id="Password_div"  style="color:red;">올바른 비밀번호 형식이 아닙니다.</span><br/>
             <label onclick="document.getElementById('focus-password').focus()"></label>
             </br>
-
-            <input type="password" name="RePassword" id="UserRePw" class="focus-repassword" value="" placeholder="비밀번호 재확인"/><br/>
+            <!--2차 비밀번호 -->
+            <input type="password" name="RePassword" id="UserRePw" class="focus-repassword" value="" placeholder="비밀번호 재확인" style="text-align:center"/><br/>
             <span id="RePassword_div"  style="color:red;">올바른 비밀번호 형식이 아닙니다.</span><br/>
             <label onclick="document.getElementById('focus-repassword').focus()"></label>
             </br>

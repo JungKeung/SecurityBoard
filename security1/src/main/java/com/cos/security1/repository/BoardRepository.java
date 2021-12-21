@@ -24,6 +24,7 @@ public class BoardRepository {
         return em.createQuery ( "select m from Board m", Board.class )
                 .getResultList ();
     }
+
     //특정 회원의 이름으로 찾기기
     public List<Board> findByName(String name){
         return em.createQuery ( "select m from Board m where m.name = :name", Board.class)
