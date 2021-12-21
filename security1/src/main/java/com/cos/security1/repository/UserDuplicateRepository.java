@@ -15,13 +15,6 @@ public class UserDuplicateRepository {
 
     private final EntityManager em;
 
-//    public String findByEmail(String email){
-//        return (em.createQuery("select u from User u where u.email = :email", User.class)
-//                .setParameter("email", email)
-//                //getSingleResult() 결과가 없으면 NoResultException 발생, 결과가 1개보다 많으면 NoUniqueResultException 발생
-//                .getSingleResult().toString());
-//    }
-
 
 
     public Optional<User> findByEmail(String email){

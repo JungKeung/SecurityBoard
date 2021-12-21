@@ -20,7 +20,10 @@
 <body>
 <div class="container">
     <div id="sform">
-
+        <!--에러 메세지 화면을 보여준다 -->
+    <div th:if="${param.error}">
+        <p th:text="${exception}" class="alert alert-danger"></p>
+    </div>
 
         <!--Security가 action login을 낚아 채서 화면을 보여준다. -->
 

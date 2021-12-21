@@ -18,15 +18,7 @@ public class UserService {
     private final UserDuplicateRepository userDuplicateRepository;
 
 
-//    public boolean checkDuplicatedEmail(String email){
-//         String userEmail = userDuplicateRepository.findByEmail(email);
-//         boolean checkEmail = userEmail == null ? false : true;
-//
-//         if (checkEmail == true){
-//             throw new IllegalStateException ("이미 존재하는 이메일입니다.");
-//         }
-//        return checkEmail;
-//    }
+
 
 
 

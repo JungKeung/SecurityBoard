@@ -59,15 +59,14 @@ public class BoardController {
     // 글 상세페이지 가져오기
     @GetMapping("/board/Detail")
     public String boardDetail(Board board, Model model, Long id){
-
         model.addAttribute ("board", boardService.boardDetail (id));
-
         return "board/boardDetail ";
     }
+
+
     // 글 수정 화면 페이지
     @GetMapping("/board/modify/{id}")
     public String boardModify(@PathVariable("id") Long id, Model model){
-
         model.addAttribute ( "board", boardService.boardDetail(id));
         return  "board/boardModify";
     }
@@ -79,7 +78,6 @@ public class BoardController {
         Board boardTemp = boardService.boardDetail(id);
         boardTemp.setTitle (board.getTitle());
         boardTemp.setContext (board.getContext());
-
         boardService.update (boardTemp);
 
         return "redirect:/board/list";
@@ -120,10 +118,4 @@ public class BoardController {
 
         return "board/boardList";
     }
-
-
-
-
-
-
 }

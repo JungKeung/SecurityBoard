@@ -1,11 +1,11 @@
 document.getElementById("JoinBtn").onclick = function () {
-        var UserEmail = document.getElementById("UserEmail").value;
+        var userEmail = document.getElementById("userEmail").value;
         var UserNickName = document.getElementById("UserNickName").value;
         var UserPwd = document.getElementById("UserPw").value;
         var UserRePwd = document.getElementById("UserRePw").value;
 
 
-        if (UserEmail === null || UserEmail === '') {
+        if (userEmail === null || userEmail === '') {
             alert("이메일를 입력하세요");
             $('.focus-email').focus();
             return false;
