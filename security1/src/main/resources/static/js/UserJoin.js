@@ -36,19 +36,9 @@ document.getElementById("JoinBtn").onclick = function () {
             return;
         }
     }
-//이메일 유효성 검사
-function validateEmail(sEmail) {
-    var filter = /^[a-z0-9\.\-_]+@([a-z0-9\-]+\.)+[a-z]{2,4}$/
-    if (filter.test(sEmail)) {
-        console.log(1);
-        return true;
-    } else {
-        console.log(2);
-        return false;
-    }
-}
-// 이메일 이벤트 처리
+
 $(document).ready(function(){
+    // 이메일 이벤트 처리
 	$(document).on('keydown', '#UserEmail', function() {
 	    var email = $('#UserEmail').val();
 
@@ -59,48 +49,18 @@ $(document).ready(function(){
 	        $('#Email_div').show();
 	    }
   	});
-});
-
-//닉네임 유효성 검사
-function validateNickname(sNickname) {
-    var filter = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,10}$/
-    if (filter.test(sNickname)) {
-        console.log(3);
-        return true;
-    } else {
-        console.log(4);
-        return false;
-    }
-}
-// 닉네임 이벤트 처리
-$(document).ready(function(){
-	$(document).on('keydown', '#UserNickName', function() {
-	    var nickname = $('#UserNickName').val();
-
-	    if (validateNickname(nickname)) {
+  	// 닉네임 이벤트 처리
+  	$(document).on('keydown', '#UserNickName', function() {
+    	var nickname = $('#UserNickName').val();
+    	if (validateNickname(nickname)) {
             $('#Nickname_div').hide();
             return false;
-	    } else{
-	        $('#Nickname_div').show();
-	    }
-  	});
-});
-
-
-//비밀번호 유효성 검사
-function validatePassword(sPassword){
-    var pwd = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,15}$/
-    if (pwd.test(sPassword)) {
-        console.log(5);
-        return true;
-    } else {
-        console.log(6);
-        return false;
-    }
-}
-// 비밀번호 이벤트 처리
-$(document).ready(function(){
-	$(document).on('keydown', '#UserPw', function() {
+    	} else{
+    	    $('#Nickname_div').show();
+    	}
+    });
+    // 비밀번호 이벤트 처리
+    $(document).on('keydown', '#UserPw', function() {
 	    var pass = $('#UserPw').val();
 
 	    if (validatePassword(pass)) {
@@ -110,20 +70,7 @@ $(document).ready(function(){
 	        $('#Password_div').show();
 	    }
   	});
-});
-//2차 비밀번호 유효성 검사
-function validateRePassword(sRePassword){
-    var pwd = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,15}$/
-    if (pwd.test(sRePassword)) {
-        console.log(5);
-        return true;
-    } else {
-        console.log(6);
-        return false;
-    }
-}
-// 2차비밀번호 이벤트 처리
-$(document).ready(function(){
+  	// 2차 비밀번호 이벤트 처리
 	$(document).on('keydown', '#UserRePw', function() {
 	    var Repass = $('#UserRePw').val();
 
@@ -134,9 +81,52 @@ $(document).ready(function(){
 	        $('#RePassword_div').show();
 	    }
   	});
+
+  	//이메일 유효성 검사
+    function validateEmail(sEmail) {
+        var filter = /^[a-z0-9\.\-_]+@([a-z0-9\-]+\.)+[a-z]{2,4}$/
+        if (filter.test(sEmail)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+  	//닉네임 유효성 검사
+    function validateNickname(sNickname) {
+        var filter = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,10}$/
+        if (filter.test(sNickname)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //비밀번호 유효성 검사
+    function validatePassword(sPassword){
+        var pwd = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,15}$/
+        if (pwd.test(sPassword)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //2차 비밀번호 유효성 검사
+    function validateRePassword(sRePassword){
+        var pwd = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,15}$/
+        if (pwd.test(sRePassword)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 });
 
 
 $(document).ready(function() {
   $('.focused-email').focus();
 });
+
+
+

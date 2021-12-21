@@ -1,8 +1,5 @@
 package com.cos.security1;
 
-import com.cos.security1.model.User;
-import com.cos.security1.repository.UserDuplicateRepository;
-import com.cos.security1.repository.UserRepository;
 import com.cos.security1.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;

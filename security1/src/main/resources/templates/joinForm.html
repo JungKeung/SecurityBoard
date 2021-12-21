@@ -22,7 +22,8 @@
         <form class="form-inline center"  onsubmit="emailCheck();" action="/join" method="POST">
 
             <!--이메일 -->
-            <input type="email" name="email" id="UserEmail" class="focus-email" value="" placeholder="이메일 작성" style="text-align:center"/> <button>이메일 중복</button> <br/>
+            <input type="email" name="email" id="UserEmail" class="focus-email" value=""
+                   placeholder="이메일 작성" style="text-align:center"/> <button id="ExistEmail">이메일 중복</button> <br/>
             <span id="Email_div" style="color:red;" >올바른 이메일 형식이 아닙니다.</span><br/>
             <label onclick="document.getElementById('focus-email').focus()"></label>
 

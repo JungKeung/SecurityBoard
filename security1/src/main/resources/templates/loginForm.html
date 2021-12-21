@@ -25,8 +25,15 @@
         <!--Security가 action login을 낚아 채서 화면을 보여준다. -->
 
         <form class="form-inline center" action="/login" method="POST">
-            <input class="form-control" type="text" name="username" id="LoginId" value="" placeholder="아이디"/><br/>
+            <input class="form-control" type="email" name="username" id="LoginEmail"  value="" placeholder="이메일 작성"/> <br/>
+            <span id="Email_div" style="color:red;" >올바른 이메일 형식이 아닙니다.</span><br/>
+            <label onclick="document.getElementById('focus-email').focus()"></label>
+
             <input class="form-control" type="password" name="password" id="LoginPassword" value="" placeholder="비밀번호"/><br/>
+            <span id="Password_div"  style="color:red;">올바른 비밀번호 형식이 아닙니다.</span><br/>
+            <label onclick="document.getElementById('focus-password').focus()"></label>
+
+            <br/>
             <button class="btn btn-primary" id="LoginBtn">로그인</button>
         </form>
         <br/>
@@ -41,5 +48,5 @@
 </div>
 </body>
 </html>
-<script src="/js/Login.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="/js/Login.js"></script>
