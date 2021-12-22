@@ -40,9 +40,13 @@ public class PrincipalDetail implements UserDetails {
         return user.getPassword();
     }
 
+    public String getPassword2() {
+        return user.getPassword();
+    }
+
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return user.getEmail ();
     }
 
     //계정 완료되었는지

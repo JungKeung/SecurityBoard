@@ -21,9 +21,9 @@ public class PrincipalDetailsService implements UserDetailsService {
     // loadUserByUsername(String username) 함수가 작동이 안한다
     // 만약 username으로 하기싫으면 SecurityConfig 에서 .loginPage아래 .usernameParameter("원하는이름") 으로 바꿔주면 된다.
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         //User이름이 제대로 있는지 확인해봐야한다 findByUsername이 없으므로 Repository에 작성해줘야한다.
-        User userEntity = userRepository.findByUsername(username);
+        User userEntity = userRepository.findByEmail(email);
 
         //user을 찾으면 PrincipalDetail에 userEntity 리턴해주고 없으면 null 리턴
         // 시큐리티 session(내부 Authentication(내부 UserDetail))

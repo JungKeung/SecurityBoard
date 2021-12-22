@@ -9,14 +9,10 @@
             margin : 0 auto;
             margin-top : 40px;
         }
-         .layout p, pre{
-            border: 1px solid #444444;
 
-
-        }
         .layout input {
             width : 100%;
-            box-sizing : border-box
+
         }
 
         .layout textarea{
@@ -25,19 +21,22 @@
             min-height : 300px;
         }
 
+        .layout ta {
+            margin-left:370px;
+       }
+
 </style>
 
 <body>
 <div class="layout">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-    <form th:action="@{/board/update/{id}(id = ${board.id})}" method="post">
-        <th>제목</th>
-        <input name="title" type="text" th:value="${board.title}">
-        <th>이메일</th>
-        <pre th:text="${board.email}">이메일</pre>
-        <th>내용</th>
-        <textarea name="context" th:text="${board.context}"></textarea>
-        <button type="submit">수정</button>
+    <form th:action="@{/board/modify/{id}(id = ${board.id})}" method="post">
+        <ta th:text="${#dates.format(board.updateDate, 'yyyy-MM-dd HH:mm')}"></ta>
+        <input style="font-size:33px; border:none" name="title" type="text" th:value="${board.title}">
+        <hr/>
+
+        <textarea style="border:none" name="context" th:text="${board.context}"></textarea>
+        <button type="submit" style="float:right;" class="btn btn-primary">수정</button>
     </form>
 
 </div>

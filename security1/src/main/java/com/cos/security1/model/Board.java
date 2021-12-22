@@ -1,41 +1,33 @@
 package com.cos.security1.model;
 
 
-import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
 
-
+@ToString
 @Getter @Setter
 @Entity
+@Data
 public class Board {
-
     @Id @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name = "board_id")
-    private Integer id;
-
-
-    private String email;
+    private Long id;
     private String title;
     private String context;
 
     @CreationTimestamp
-    private Date CreatedDate;
+    private Date createdDate;
 
     @UpdateTimestamp
-    private Date UpdateDate;
+    private Date updateDate;
 
-    @Builder
-    public Board() {
-        this.id = id;
-        this.email = email;
-        this.title = title;
-        this.context = context;
-
-    }
+    @ManyToOne
+    @JoinColumn(name = "email")
+    private User user;
 }
