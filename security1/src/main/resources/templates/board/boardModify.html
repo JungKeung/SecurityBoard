@@ -31,7 +31,7 @@
 <div class="layout">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
     <form th:action="@{/board/modify/{id}(id = ${board.id})}" method="post">
-        <ta th:text="${#dates.format(board.UpdateDate, 'yyyy-MM-dd HH:mm')}"></ta>
+        <ta th:text="${#dates.format(board.updateDate, 'yyyy-MM-dd HH:mm')}"></ta>
         <input style="font-size:33px; border:none" name="title" type="text" th:value="${board.title}">
         <hr/>
 

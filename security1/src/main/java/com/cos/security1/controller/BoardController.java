@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -55,11 +57,15 @@ public class BoardController {
 
     }
 
-
     // 글 상세페이지 가져오기
     @GetMapping("/board/Detail")
     public String boardDetail(Board board, Model model, Long id){
-        model.addAttribute ("board", boardService.boardDetail (id));
+        model.addAttribute("board", boardService.boardDetail(id));
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDetails user = (UserDetails)principal; // 세션에 있는 유저 객체 가져오기
+
+        System.out.println (user.getUsername());
+        model.addAttribute("userEmail", user.getUsername());
         return "board/boardDetail ";
     }
 
@@ -115,7 +121,19 @@ public class BoardController {
         model.addAttribute ( "startPage", startPage );
         model.addAttribute ( "endPage", endPage );
 
-
         return "board/boardList";
     }
+
+
+/*
+    // 글 상세페이지 가져오기
+    @GetMapping("/board/Detail")
+    public String boardDetail(Board board, Model model, Long id,HttpSession session){
+        model.addAttribute ("board", boardService.boardDetail (id));
+        String email = (String) session.getAttribute("userId");
+
+        return "board/boardDetail ";
+    }
+
+ */
 }

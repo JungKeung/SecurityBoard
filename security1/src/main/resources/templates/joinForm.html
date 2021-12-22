@@ -19,31 +19,35 @@
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
     <div id="sform">
         <hr/>
+        <button id="checkEmail">이메일 중복</button>
         <form class="form-inline center"  onsubmit="emailCheck();" action="/join" method="POST">
 
             <!--이메일 -->
-            <input type="email" name="email" id="UserEmail" class="focus-email" value=""
-                   placeholder="이메일 작성" style="text-align:center"/> <button id="ExistEmail">이메일 중복</button> <br/>
-            <span id="Email_div" style="color:red;" >올바른 이메일 형식이 아닙니다.</span><br/>
+            <input type="email" name="email" id="userEmail" class="focus-email" value=""
+                   placeholder="이메일 작성" style="text-align:center"/> <br/>
+            <span id="email" style="color:red;" >올바른 이메일 형식이 아닙니다.</span><br/>
             <label onclick="document.getElementById('focus-email').focus()"></label>
 
             <!--닉네임 -->
-            <input type="text" name="nickname" id="UserNickName"  class="focus-nickname" value="" placeholder="닉네임 작성" style="text-align:center"/> <button>닉네임 중복</button> <br/>
-            <span id="Nickname_div"  style="color:red;">올바른 닉네임 형식이 아닙니다.</span><br/>
+            <input type="text" name="nickname" id="userNickName"  class="focus-nickname" value=""
+                   placeholder="닉네임 작성" style="text-align:center"/> <br/>
+            <span id="nickname"  style="color:red;">올바른 닉네임 형식이 아닙니다.</span><br/>
             <label onclick="document.getElementById('focus-nickname').focus()"></label>
 
             <!--1차 비밀번호 -->
-            <input type="password" name="password" id="UserPw" class="focus-password" value="" placeholder="비밀번호 작성" style="text-align:center"/><br/>
-            <span id="Password_div"  style="color:red;">올바른 비밀번호 형식이 아닙니다.</span><br/>
+            <input type="password" name="password" id="userPassword" class="focus-password" value=""
+                   placeholder="비밀번호 작성" style="text-align:center"/><br/>
+            <span id="password"  style="color:red;">올바른 비밀번호 형식이 아닙니다.</span><br/>
             <label onclick="document.getElementById('focus-password').focus()"></label>
             </br>
             <!--2차 비밀번호 -->
-            <input type="password" name="RePassword" id="UserRePw" class="focus-repassword" value="" placeholder="비밀번호 재확인" style="text-align:center"/><br/>
-            <span id="RePassword_div"  style="color:red;">올바른 비밀번호 형식이 아닙니다.</span><br/>
-            <label onclick="document.getElementById('focus-repassword').focus()"></label>
+            <input type="password" name="RePassword" id="userRePassword" class="focus-rePassword" value=""
+                   placeholder="비밀번호 재확인" style="text-align:center"/><br/>
+            <span id="rePassword"  style="color:red;">올바른 비밀번호 형식이 아닙니다.</span><br/>
+            <label onclick="document.getElementById('focus-rePassword').focus()"></label>
             </br>
 
-            <button class="btn btn-primary" id="JoinBtn"  >회원가입</button>
+            <button class="btn btn-primary" id="joinButton"  >회원가입</button>
 
         </form>
     </div>
@@ -56,6 +60,6 @@
 </html>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-<script src="/js/UserJoin.js"></script>
+<script src="/js/joinForm.js"></script>
 
 

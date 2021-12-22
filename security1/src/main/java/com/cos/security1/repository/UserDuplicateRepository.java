@@ -5,8 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.TypedQuery;
 import java.util.Optional;
 
 @Repository
@@ -18,14 +16,10 @@ public class UserDuplicateRepository {
 
 
     public Optional<User> findByEmail(String email){
-        Optional<User> user = null;
-        try{
-            user = Optional.ofNullable(em.createQuery("select u from User u where u.email = :email", User.class)
-                    .setParameter("email", email).getSingleResult());
-        } catch (NoResultException e) {
-            user = Optional.empty();
-        } finally {
+            Optional<User> user = Optional.ofNullable ( (em.createQuery ( "select u from User u where u.email = :email", User.class )
+                    .setParameter ( "email", email )
+                    .getSingleResult ()) );
             return user;
         }
     }
-}
+

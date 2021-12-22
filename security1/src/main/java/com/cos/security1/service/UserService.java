@@ -17,11 +17,6 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserDuplicateRepository userDuplicateRepository;
 
-
-
-
-
-
     public boolean checkDuplicatedEmail(String email){
         Optional<User> userEmail = userDuplicateRepository.findByEmail(email);
         boolean checkEmail = userEmail == null ? false : true;
@@ -29,9 +24,10 @@ public class UserService {
         if (checkEmail == true){
             throw new IllegalStateException ("이미 존재하는 이메일입니다.");
         }
-
-        return checkEmail;
+        return false;
     }
+
+
 
     public String checkNicknameDuplicate(String nickname){
        userRepository.existsByNickname (nickname);

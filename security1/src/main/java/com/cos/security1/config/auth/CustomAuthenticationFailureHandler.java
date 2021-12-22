@@ -28,7 +28,7 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
             msg = "email or password Error";
         }
 
-
+        //영어 한글로 번역가능하게 인코딩
         msg = URLEncoder.encode(msg, "UTF-8");
         ///login?error=true&exception= 전부 작성해야 나타남
         setDefaultFailureUrl ("/login?error=true&exception="+msg);

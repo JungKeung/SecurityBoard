@@ -10,10 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -78,11 +75,12 @@ public class UserController {
         userRepository.save(user); //회원가입 잘됨. 이렇게 하면 비밀번호 노출되어 시큐리티로 로그인 안됨
         return "redirect:board/list";
     }
-
-
-    @GetMapping("/user-nicknames/{nickname}/exists")
-    public ResponseEntity<String> checkNicknameDuplicate(@PathVariable String nickname){
-        return ResponseEntity.ok(userService.checkNicknameDuplicate(nickname));
+    //ResponseBody는 JSON으로 변환 작업이 이루어진다.
+    @ResponseBody
+    @RequestMapping(value = "/existsEmail/{email}", method = RequestMethod.GET)
+    public ResponseEntity<Boolean> checkEmailDuplicate(@PathVariable("email") String email){
+        return ResponseEntity.ok(userService.checkDuplicatedEmail(email));
     }
+
 
 }

@@ -1,15 +1,13 @@
-
-
 $(document).ready(function(){
-    $(document).on('click', '#LoginBtn', function(){
-        var userEmail = document.getElementById("LoginEmail").value;
-        var userPwd = document.getElementById("LoginPassword").value;
+    $(document).on('click', '#loginButton', function(){
+        var loginEmail = document.getElementById("loginEmail").value;
+        var loginPassword = document.getElementById("loginPassword").value;
 
-        if (userEmail === null || userEmail === '') {
+        if (loginEmail === null || loginEmail === '') {
             alert("아이디를 입력하세요");
             return false;
         }
-        if (userPwd === null || userPwd === '') {
+        if (loginPassword === null || loginPassword === '') {
             alert("비밀번호를 입력하세요");
             return false;
         } else {
@@ -18,26 +16,26 @@ $(document).ready(function(){
     });
 
     // 이메일 이벤트 처리
-	$(document).on('keydown', '#LoginEmail', function() {
-    	    var email = $('#LoginEmail').val();
+	$(document).on('keydown', '#loginEmail', function() {
+    	    var userEmail = $('#loginEmail').val();
 
-    	    if (validateEmail(email)) {
-                $('#Email_div').hide();
+    	    if (validateEmail(userEmail)) {
+                $('#email').hide();
                 return false;
     	    } else{
-    	        $('#Email_div').show();
+    	        $('#email').show();
     	    }
       	});
 
     // 비밀번호 이벤트 처리
-  	$(document).on('keydown', '#LoginPassword', function() {
-    	var userPwd = $('#LoginPassword').val();
+  	$(document).on('keydown', '#loginPassword', function() {
+    	var userPassword = $('#loginPassword').val();
 
-    	if (validatePassword(userPwd)) {
-            $('#Password_div').hide();
+    	if (validatePassword(userPassword)) {
+            $('#password').hide();
             return false;
     	} else {
-    	    $('#Password_div').show();
+    	    $('#password').show();
     	}
     });
 
@@ -52,9 +50,9 @@ $(document).ready(function(){
     }
 
     //비밀번호 유효성 검사
-    function validatePassword(userPwd){
+    function validatePassword(userPassword){
         var pwd = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,15}$/
-        if (pwd.test(userPwd)) {
+        if (pwd.test(userPassword)) {
             return true;
         } else {
             return false;

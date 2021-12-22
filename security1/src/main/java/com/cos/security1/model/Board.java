@@ -16,19 +16,18 @@ import java.util.Date;
 @Entity
 @Data
 public class Board {
-
     @Id @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String title;
     private String context;
 
     @CreationTimestamp
-    private Date CreatedDate;
+    private Date createdDate;
 
     @UpdateTimestamp
-    private Date UpdateDate;
+    private Date updateDate;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "email")
     private User user;
 }
