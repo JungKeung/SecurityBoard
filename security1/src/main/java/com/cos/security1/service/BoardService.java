@@ -28,6 +28,8 @@ public class BoardService {
         return boardRepository.save(board);
     }
 
+
+
     // 게시글 수정 시 특정 Id 가져오기
     public Long update(Board board) {
         boardRepository.save ( board );

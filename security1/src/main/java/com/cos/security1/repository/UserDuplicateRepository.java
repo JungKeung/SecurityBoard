@@ -13,8 +13,6 @@ public class UserDuplicateRepository {
 
     private final EntityManager em;
 
-
-
     public Optional<User> findByEmail(String email){
             Optional<User> user = Optional.ofNullable ( (em.createQuery ( "select u from User u where u.email = :email", User.class )
                     .setParameter ( "email", email )

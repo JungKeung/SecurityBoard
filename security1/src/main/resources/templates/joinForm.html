@@ -2,18 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header"/>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-
-<style>
-         .fieldError {
-            border-color: #bd2130;
-         }
-
-         #sform {
-            text-align: center;
-         }
-
-
-</style>
+<link href="/css/user/joinForm.css" rel="stylesheet">
 <body>
 <div class="container">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
@@ -47,7 +36,7 @@
             <label onclick="document.getElementById('focus-rePassword').focus()"></label>
             </br>
 
-            <button class="btn btn-primary" id="joinButton"  >회원가입</button>
+            <button class="button" id="joinButton"  >회원가입</button>
 
         </form>
     </div>

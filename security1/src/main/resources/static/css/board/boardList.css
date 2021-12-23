@@ -1,0 +1,13 @@
+.table, td, th {
+    border : 1px solid black;
+    border-collapse : collapse;
+}
+
+.th, td {
+    text-align: center;
+}
+.btn-primary {
+    background-color: #7bc143;
+    border-color: #7bc143;
+    color: #FFF;
+}

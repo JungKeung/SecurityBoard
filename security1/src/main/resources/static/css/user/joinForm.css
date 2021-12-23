@@ -1,0 +1,13 @@
+.fieldError {
+    border-color: #bd2130;
+}
+
+#sform {
+    text-align: center;
+}
+.button{
+    background-color:#03C75A;
+    border-color:white;
+    color:white;
+     padding: 5px 10px
+}

@@ -16,6 +16,7 @@ import java.util.Date;
 @Entity
 @Data
 public class Board {
+
     @Id @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String title;
@@ -28,6 +29,6 @@ public class Board {
     private Date updateDate;
 
     @ManyToOne
-    @JoinColumn(name = "email")
+    @JoinColumn(name = "user_id")
     private User user;
 }

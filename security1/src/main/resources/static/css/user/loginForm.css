@@ -1,0 +1,12 @@
+h1{
+    text-align: center;
+}
+#sform {
+    text-align: center;
+}
+.button{
+    background-color:#03C75A;
+    border-color:white;
+    color:white;
+     padding: 5px 10px
+}

@@ -1,0 +1,25 @@
+.layout{
+    width : 500px;
+    margin : 0 auto;
+    margin-top : 40px;
+}
+
+.layout input {
+    width : 100%;
+
+}
+
+.layout textarea{
+    width : 100%;
+    margin-top : 10px;
+    min-height : 300px;
+}
+
+.layout ta {
+    margin-left:370px;
+}
+.btn-primary {
+    background-color: #7bc143;
+    border-color: #7bc143;
+    color: #FFF;
+}

@@ -19,7 +19,6 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException{
 
 
-
         //client에 보여줄 에러메세지 (한글 및 특수문자 안됨)
         String msg = "이메일 또는 비밀번호가 잘못 입력 되었습니다.";
 
