@@ -3,11 +3,11 @@ $(document).ready(function(){
         var loginEmail = document.getElementById("loginEmail").value;
         var loginPassword = document.getElementById("loginPassword").value;
 
-        if (loginEmail === null || loginEmail === '') {
+        if (loginEmail === null || loginEmail === '' || loginPassword === undefined) {
             alert("아이디를 입력하세요");
             return false;
         }
-        if (loginPassword === null || loginPassword === '' || loginPassword === undefiend) {
+        if (loginPassword === null || loginPassword === '' || loginPassword === undefined) {
             alert("비밀번호를 입력하세요");
             return false;
         } else {

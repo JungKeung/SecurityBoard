@@ -5,25 +5,24 @@ $(document).ready(function(){
         var userPassword = document.getElementById("userPassword").value;
         var userRePassword = document.getElementById("userRePassword").value;
 
-
         if (userEmail === null || userEmail === '') {
-            alert("이메일를 입력하세요");
-            $('.focus-email').focus();
+            $('#EmailValidateMsg').text("dfdafdsfad");
+            $('#EmailValidateMsg').show();
             return false;
         }
 
-        if (userNickName === null || userNickName === '') {
+        if (userNickName === null || userNickName === '' || loginPassword === undefined) {
             alert("닉네임을 입력하세요");
             $('.focus-nickname').focus();
             return false;
         }
 
-        if (userPassword === null || userPassword === '') {
+        if (userPassword === null || userPassword === '' || loginPassword === undefined) {
             alert("비밀번호를 입력하세요");
             $('.focus-password').focus();
             return false;
         }
-        if (userRePassword === null || userRePassword === '') {
+        if (userRePassword === null || userRePassword === '' || loginPassword === undefined) {
             alert("2차비밀번호를 입력하세요");
             $('.focus-rePassword').focus();
             return false;
@@ -62,13 +61,14 @@ $(document).ready(function(){
     });
     // 이메일 이벤트 처리
 	$(document).on('keydown', '#userEmail', function() {
-	    var email = $('#userEmail').val();
+	    var userEmail = $('#userEmail').val();
+        console.log(userEmail);
 
-	    if (validateEmail(email)) {
-            $('#email').hide();
-            return false;
-	    } else {
-	        $('#email').show();
+	    if (validateEmail(userEmail) === true) {
+            $('#EmailValidateMsg').hide();
+	    } else if (validateEmail(userEmail) === false) {
+	        $('#EmailValidateMsg').text("잘못된 이메일 형식입니다.");
+            $('#EmailValidateMsg').show();
 	    }
   	});
   	// 닉네임 이벤트 처리
@@ -108,7 +108,7 @@ $(document).ready(function(){
 
   	//이메일 유효성 검사
     function validateEmail(email) {
-        var filter = /^[a-z0-9\.\-_]+@([a-z0-9\-]+\.)+[a-z]{2,4}$/
+        var filter = /^[a-z0-9\.\-_]+@([a-z0-9\-]+\.)+[a-z]{2,3}$/
         if (filter.test(email)) {
             return true;
         } else {
@@ -146,26 +146,17 @@ $(document).ready(function(){
         }
     }
     //focus 이벤트
-     $('.focused-email').focus();
+    $('.focused-email').focus();
 
-     //체크박스 동의 이벤트트
-//    $("#boardConsentCheck").click(function(){
-//         var checkbox = $("input[name='checkbox']:checked");
-//         if(checkbox.length == 0){
-//             $('#consentCheck').show();
-//         } else  {
-//             $('#consentCheck').hide();
-//         }
-//     });
-
-    $("#boardConsentCheck").click(function(){
+    //체크박스 동의 이벤트
+    $("#boardAgreementCheck").click(function(){
         var checkbox = $("input[name='checkbox']:checked");
-        if($("#boardConsentCheck").prop("checked")){
-            $('#consentCheck').hide();
-            $("boardConsentCheck").val(1);
+        if($("#boardAgreementCheck").prop("checked")){
+            $('#agreementCheck').hide();
+            $("boardAgreementCheck").val(1);
         } else  {
-            $('#consentCheck').show();
-            $("boardConsentCheck").val(0);
+            $('#agreementCheck').show();
+            $("boardAgreementCheck").val(0);
         }
     });
 });
