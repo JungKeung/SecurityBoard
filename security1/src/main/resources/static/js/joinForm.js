@@ -5,25 +5,29 @@ $(document).ready(function(){
         var userPassword = document.getElementById("userPassword").value;
         var userRePassword = document.getElementById("userRePassword").value;
 
-        if (userEmail === null || userEmail === '') {
-            $('#EmailValidateMsg').text("dfdafdsfad");
+        if (userEmail === null || userEmail === '' || userEmail === undefined) {
+            $('#EmailValidateMsg').text("이메일 작성 해주세요");
             $('#EmailValidateMsg').show();
+            $('.focus-email').focus();
             return false;
         }
 
-        if (userNickName === null || userNickName === '' || loginPassword === undefined) {
-            alert("닉네임을 입력하세요");
+        if (userNickName === null || userNickName === '' || userNickName === undefined) {
+            $('#nicknameValidateMsg').text("닉네임 작성 해주세요");
+            $('#nicknameValidateMsg').show();
             $('.focus-nickname').focus();
             return false;
         }
 
-        if (userPassword === null || userPassword === '' || loginPassword === undefined) {
-            alert("비밀번호를 입력하세요");
+        if (userPassword === null || userPassword === '' || userPassword === undefined) {
+            $('#passwordValidateMsg').text("비밀번호 작성 해주세요");
+            $('#passwordValidateMsg').show();
             $('.focus-password').focus();
             return false;
         }
-        if (userRePassword === null || userRePassword === '' || loginPassword === undefined) {
-            alert("2차비밀번호를 입력하세요");
+        if (userRePassword === null || userRePassword === '' || userRePassword === undefined) {
+            $('#rePasswordValidateMsg').text("2차 비밀번호 작성 해주세요");
+            $('#rePasswordValidateMsg').show();
             $('.focus-rePassword').focus();
             return false;
         }
@@ -74,36 +78,33 @@ $(document).ready(function(){
   	// 닉네임 이벤트 처리
   	$(document).on('keydown', '#userNickName', function() {
     	var nickname = $('#userNickName').val();
-    	if (validateNickname(nickname)) {
-            $('#nickname').hide();
-            return false;
-    	} else {
-    	    $('#nickname').show();
+    	if (validateNickname(nickname) === true) {
+            $('#nicknameValidateMsg').hide();
+    	} else if (validateNickname(nickname) === false) {
+    	    $('#nicknameValidateMsg').text("잘못된 닉네임 형식입니다.");
+    	    $('#nicknameValidateMsg').show();
     	}
     });
     // 비밀번호 이벤트 처리
     $(document).on('keydown', '#userPassword', function() {
 	    var password = $('#userPassword').val();
-
-	    if (validatePassword(password)) {
-            $('#password').hide();
-            return false;
-	    } else {
-	        $('#password').show();
+	    if (validatePassword(password) === true) {
+            $('#passwordValidateMsg').hide();
+	    } else if (validatePassword(password) === false) {
+	        $('#passwordValidateMsg').text("잘못된 비밀번호 형식입니다.");
+	        $('#passwordValidateMsg').show();
 	    }
   	});
   	// 2차 비밀번호 이벤트 처리
 	$(document).on('keydown', '#userRePassword', function() {
 	    var rePassword = $('#userRePassword').val();
 
-	    if (validateRePassword(rePassword)) {
-            $('#rePassword').hide();
-            return false;
-	    } else {
-	        $('#rePassword').show();
-	    }
-
-
+	    if (validatePassword(password) === true) {
+            $('#rePasswordValidateMsg').hide();
+        } else if (validatePassword(password) === false) {
+            $('#rePasswordValidateMsg').text("잘못된 비밀번호 형식입니다.");
+            $('#rePasswordValidateMsg').show();
+        }
     });
 
   	//이메일 유효성 검사
