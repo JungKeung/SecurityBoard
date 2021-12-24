@@ -3,12 +3,14 @@ $(document).ready(function(){
         var loginEmail = document.getElementById("loginEmail").value;
         var loginPassword = document.getElementById("loginPassword").value;
 
-        if (loginEmail === null || loginEmail === '') {
-            alert("아이디를 입력하세요");
+        if (loginEmail === null || loginEmail === ''|| loginEmail === undefined) {
+            $('#EmailValidateMsg').text("이메일 작성 해주세요");
+            $('#EmailValidateMsg').show();
             return false;
         }
-        if (loginPassword === null || loginPassword === '') {
-            alert("비밀번호를 입력하세요");
+        if (loginPassword === null || loginPassword === ''|| loginPassword === undefined) {
+            $('#passwordValidateMsg').text("비밀번호 작성 해주세요");
+            $('#passwordValidateMsg').show();
             return false;
         } else {
             return;
@@ -17,26 +19,26 @@ $(document).ready(function(){
 
     // 이메일 이벤트 처리
 	$(document).on('keydown', '#loginEmail', function() {
-    	    var userEmail = $('#loginEmail').val();
+        var userEmail = $('#loginEmail').val();
 
-    	    if (validateEmail(userEmail)) {
-                $('#email').hide();
-                return false;
-    	    } else{
-    	        $('#email').show();
-    	    }
-      	});
+        if (validateEmail(userEmail) === true) {
+             $('#EmailValidateMsg').hide();
+        } else if (validateEmail(userEmail) === false) {
+             $('#EmailValidateMsg').text("잘못된 이메일 형식입니다.");
+             $('#EmailValidateMsg').show();
+        }
+    });
 
     // 비밀번호 이벤트 처리
   	$(document).on('keydown', '#loginPassword', function() {
     	var userPassword = $('#loginPassword').val();
 
-    	if (validatePassword(userPassword)) {
-            $('#password').hide();
-            return false;
-    	} else {
-    	    $('#password').show();
-    	}
+    	if (validatePassword(userPassword) === true) {
+            $('#passwordValidateMsg').hide();
+        } else if (validatePassword(userPassword) === false) {
+            $('#passwordValidateMsg').text("잘못된 비밀번호 형식입니다.");
+            $('#passwordValidateMsg').show();
+        }
     });
 
     //이메일 유효성 검사

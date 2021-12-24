@@ -16,11 +16,11 @@
         <form class="form-inline center" action="/login" method="POST">
             <input class="form-control" type="email" name="username" id="loginEmail" value="" placeholder="이메일 작성"/>
             <br/>
-            <span id="email" style="color:red;">올바른 이메일 형식이 아닙니다.</span><br/>
+            <span id="EmailValidateMsg" style="color:red;"></span><br/>
             <label onclick="document.getElementById('focus-email').focus()"></label>
 
             <input class="form-control" type="password" name="password" id="loginPassword" value="" placeholder="비밀번호"/><br/>
-            <span id="password" style="color:red;">올바른 비밀번호 형식이 아닙니다.</span><br/>
+            <span id="passwordValidateMsg" style="color:red;"></span><br/>
             <label onclick="document.getElementById('focus-password').focus()"></label>
 
             <!--에러 메세지 화면을 보여준다 -->
