@@ -33,7 +33,8 @@ $(document).ready(function(){
         }
 
         if (!(userPassword === userRePassword)) {
-            alert("비밀번호가 같지 않습니다");
+            $('#rePasswordValidateMsg').text("비밀번호가 같지 않습니다");
+            $('#rePasswordValidateMsg').show();
 
             return false;
         } else {
