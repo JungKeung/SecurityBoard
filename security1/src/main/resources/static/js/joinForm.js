@@ -102,7 +102,9 @@ $(document).ready(function(){
 	    } else {
 	        $('#rePassword').show();
 	    }
-  	});
+
+
+    });
 
   	//이메일 유효성 검사
     function validateEmail(email) {
@@ -143,9 +145,33 @@ $(document).ready(function(){
             return false;
         }
     }
+    //focus 이벤트
+     $('.focused-email').focus();
+
+     //체크박스 동의 이벤트트
+//    $("#boardConsentCheck").click(function(){
+//         var checkbox = $("input[name='checkbox']:checked");
+//         if(checkbox.length == 0){
+//             $('#consentCheck').show();
+//         } else  {
+//             $('#consentCheck').hide();
+//         }
+//     });
+
+    $("#boardConsentCheck").click(function(){
+        var checkbox = $("input[name='checkbox']:checked");
+        if($("#boardConsentCheck").prop("checked")){
+            $('#consentCheck').hide();
+            $("boardConsentCheck").val(1);
+        } else  {
+            $('#consentCheck').show();
+            $("boardConsentCheck").val(0);
+        }
+    });
 });
 
 
-$(document).ready(function() {
-  $('.focused-email').focus();
-});
+
+
+
+

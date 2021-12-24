@@ -22,6 +22,10 @@
     color: #FFF;
 }
 
+.oneLine{
+    display:inline;
+}
+
 .layout ta {
     margin-left:370px;
 }

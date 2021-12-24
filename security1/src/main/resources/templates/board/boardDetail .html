@@ -10,9 +10,11 @@
 <div class="layout">
 
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-    <ta th:text="${#dates.format(board.createdDate, 'yyyy-MM-dd HH:mm')}"></ta>
+    <b style="float:right;">작성일</b>
+    <br/>
+    <h2 th:text="${board.title}" style="display:inline;"></h2>
+    <ta th:text="${#dates.format(board.createdDate, 'yyyy-MM-dd')}" style="display:inline;"></ta>
 
-    <h2 th:text="${board.title}">제목입니다.</h2>
     <hr style="red"/>
 
     <p th:text="${board.context}">내용이 들어갈 부분입니다.</p>

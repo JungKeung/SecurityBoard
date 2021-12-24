@@ -29,6 +29,6 @@ public class Board {
     private Date updateDate;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "email")
     private User user;
 }

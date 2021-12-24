@@ -14,13 +14,15 @@ import javax.persistence.*;
 @Data
 public class User {
 
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    @Id
     private String email;
+
     private String password;
     private String nickname; //작성자
     private String role; //ROLE_USER,ROLE_ADMIN
+    //약관 동의
+    private Long consent;
+    private Long disagree;
 
 
 }

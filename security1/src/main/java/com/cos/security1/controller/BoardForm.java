@@ -16,8 +16,5 @@ public class BoardForm {
 
     private String context;
 
-    @CreationTimestamp
-    private Date CreatedDate;
-
 }
 
