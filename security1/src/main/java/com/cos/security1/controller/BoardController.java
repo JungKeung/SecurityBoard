@@ -4,7 +4,6 @@ package com.cos.security1.controller;
 import com.cos.security1.model.Board;
 import com.cos.security1.model.User;
 import com.cos.security1.repository.PagingRepository;
-import com.cos.security1.repository.UserRepository;
 import com.cos.security1.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -61,6 +60,7 @@ public class BoardController {
     @GetMapping("/board/Detail")
     public String boardDetail(Board board, Model model, Long id){
         model.addAttribute("board", boardService.boardDetail(id));
+        //Principal : 보호된 대상에 접근하는 유저
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserDetails user = (UserDetails)principal; // 세션에 있는 유저 객체 가져오기
 
@@ -125,15 +125,4 @@ public class BoardController {
     }
 
 
-/*
-    // 글 상세페이지 가져오기
-    @GetMapping("/board/Detail")
-    public String boardDetail(Board board, Model model, Long id,HttpSession session){
-        model.addAttribute ("board", boardService.boardDetail (id));
-        String email = (String) session.getAttribute("userId");
-
-        return "board/boardDetail ";
-    }
-
- */
 }

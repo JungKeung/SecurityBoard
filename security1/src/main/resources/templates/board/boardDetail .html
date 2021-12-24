@@ -5,42 +5,15 @@
 <meta charset="UTF-8">
 <title>게시글 리스트 페이지</title>
 </head>
-<style>
-
-       .layout{
-            width : 500px;
-            margin : 0 auto;
-            margin-top : 40px;
-        }
-
-       .layout h2 {
-
-
-
-        }
-       .layout p{
-            width : 100%;
-            margin-top : 10px;
-            min-height : 300px;
-
-       }
-
-       .layout button{
-             margin-left:15px;
-       }
-
-       .layout ta {
-            margin-left:370px;
-       }
-
-
-</style>
+<link href="/css/board/boardDetail.css" rel="stylesheet">
 <body>
 <div class="layout">
-    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-    <ta th:text="${#dates.format(board.createdDate, 'yyyy-MM-dd HH:mm')}"></ta>
 
-    <h2 th:text="${board.title}">제목입니다.</h2>
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <b style="float:right;">작성일</b>
+    <br/>
+    <ta th:text="${#dates.format(board.createdDate, 'yyyy-MM-dd')}"></ta>
+    <h2 th:text="${board.title}"></h2>
     <hr style="red"/>
 
     <p th:text="${board.context}">내용이 들어갈 부분입니다.</p>
@@ -53,6 +26,7 @@
         <form th:action="@{/board/delete(id=${board.id})}" style="float:right;">
             <button type="submit " class="btn btn-primary">삭제</button>
         </form>
+
     </div>
 </div>
 </div>

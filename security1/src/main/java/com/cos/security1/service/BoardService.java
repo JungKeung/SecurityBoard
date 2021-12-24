@@ -45,7 +45,6 @@ public class BoardService {
     }
 
 
-
     //게시물 리스트 페이지 처리
     public Page<Board> boardList(Pageable pageable) {
 

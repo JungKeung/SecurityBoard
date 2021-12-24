@@ -26,16 +26,4 @@ public class UserService {
         }
         return false;
     }
-
-
-
-    public String checkNicknameDuplicate(String nickname){
-       userRepository.existsByNickname (nickname);
-       if (userRepository.existsByNickname(nickname)){
-           throw new IllegalStateException ("이미 존재하는 닉네임입니다.");
-       }
-       return nickname;
-    }
-
-
 }

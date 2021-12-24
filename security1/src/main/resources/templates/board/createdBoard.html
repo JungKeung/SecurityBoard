@@ -1,28 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header"/>
-<style>
-         .fieldError {
-         border-color: #bd2130;
-         }
-         .layout{
-            width : 500px;
-            margin : 0 auto;
-            margin-top : 10px;
-        }
-
-        .layout input {
-            width : 100%;
-
-        }
-
-        .layout textarea{
-            width : 100%;
-            margin-top : 10px;
-            min-height : 500px;
-        }
-
-</style>
+<link href="/css/board/createdBoard.css" rel="stylesheet">
 <body>
 <div class="container">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
@@ -31,14 +10,12 @@
 
         <div class="layout">
             <label th:for="title"></label>
-
             <input style="font-size:30px;  border:none" type="text" th:field="*{title}" placeholder="제목를 입력하세요">
         </div>
-        <hr/>
+        <hr width="600px"/>
 
         <div class="layout">
             <label th:for="context"></label>
-
             <textarea style=" border:none " type="text" th:field="*{context}" placeholder="내용를 입력하세요"></textarea>
         </div>
 

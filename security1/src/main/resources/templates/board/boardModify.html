@@ -1,37 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header"/>
+<link href="/css/board/boardModify.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>게시물 작성폼</title>
-<style>
-        .layout{
-            width : 500px;
-            margin : 0 auto;
-            margin-top : 40px;
-        }
-
-        .layout input {
-            width : 100%;
-
-        }
-
-        .layout textarea{
-            width : 100%;
-            margin-top : 10px;
-            min-height : 300px;
-        }
-
-        .layout ta {
-            margin-left:370px;
-       }
-
-</style>
-
 <body>
 <div class="layout">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
     <form th:action="@{/board/modify/{id}(id = ${board.id})}" method="post">
-        <ta th:text="${#dates.format(board.updateDate, 'yyyy-MM-dd HH:mm')}"></ta>
         <input style="font-size:33px; border:none" name="title" type="text" th:value="${board.title}">
         <hr/>
 

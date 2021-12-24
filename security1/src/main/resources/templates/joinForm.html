@@ -2,52 +2,51 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header"/>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-
-<style>
-         .fieldError {
-            border-color: #bd2130;
-         }
-
-         #sform {
-            text-align: center;
-         }
-
-
-</style>
+<link href="/css/user/joinForm.css" rel="stylesheet">
 <body>
 <div class="container">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
     <div id="sform">
         <hr/>
-        <button id="checkEmail">이메일 중복</button>
+        <br/>
         <form class="form-inline center"  onsubmit="emailCheck();" action="/join" method="POST">
 
             <!--이메일 -->
             <input type="email" name="email" id="userEmail" class="focus-email" value=""
                    placeholder="이메일 작성" style="text-align:center"/> <br/>
-            <span id="email" style="color:red;" >올바른 이메일 형식이 아닙니다.</span><br/>
+            <span id="EmailValidateMsg" style="display:none; color:red;" ></span><br/>
             <label onclick="document.getElementById('focus-email').focus()"></label>
-
+            </br>
             <!--닉네임 -->
             <input type="text" name="nickname" id="userNickName"  class="focus-nickname" value=""
                    placeholder="닉네임 작성" style="text-align:center"/> <br/>
-            <span id="nickname"  style="color:red;">올바른 닉네임 형식이 아닙니다.</span><br/>
+            <span id="nickname"  style="display:none; color:red;">올바른 닉네임 형식이 아닙니다.</span><br/>
             <label onclick="document.getElementById('focus-nickname').focus()"></label>
-
+            </br>
             <!--1차 비밀번호 -->
             <input type="password" name="password" id="userPassword" class="focus-password" value=""
                    placeholder="비밀번호 작성" style="text-align:center"/><br/>
-            <span id="password"  style="color:red;">올바른 비밀번호 형식이 아닙니다.</span><br/>
+            <span id="password"  style="display:none; color:red;">올바른 비밀번호 형식이 아닙니다.</span><br/>
             <label onclick="document.getElementById('focus-password').focus()"></label>
             </br>
             <!--2차 비밀번호 -->
             <input type="password" name="RePassword" id="userRePassword" class="focus-rePassword" value=""
                    placeholder="비밀번호 재확인" style="text-align:center"/><br/>
-            <span id="rePassword"  style="color:red;">올바른 비밀번호 형식이 아닙니다.</span><br/>
+            <span id="rePassword"  style="display:none; color:red;">올바른 비밀번호 형식이 아닙니다.</span><br/>
             <label onclick="document.getElementById('focus-rePassword').focus()"></label>
-            </br>
+            <br/>
 
-            <button class="btn btn-primary" id="joinButton"  >회원가입</button>
+            <input type="checkbox" name="checkbox" value="1" id="boardAgreementCheck">게시판 이용 약관 동의(필수)<br/>
+            <input type="hidden" name="checkbox" value="0" id="boardDisagreeCheck">
+            <span id="agreementCheck"  style="color:red;">이용 약관에 대한 동의해주세요.</span><br/>
+            <br/>
+            <input type="checkbox" name="checkbox" value="1" id="MarketingConsentCheck">마게팅 홍보 수신 동의(선택)
+            <input type="hidden" name="checkbox" value="0" id="MarketingDisagreeCheck">
+
+
+            <br/>
+            <br/>
+            <button class="button" id="joinButton"  >회원가입</button>
 
         </form>
     </div>
