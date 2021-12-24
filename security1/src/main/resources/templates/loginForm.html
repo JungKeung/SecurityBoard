@@ -3,7 +3,7 @@
 <head th:replace="fragments/header :: header">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Home</title>
-    <h1>Security Board</h1>
+    <h1>Hello Board</h1>
     </br>
     </br>
 </head>
@@ -11,8 +11,6 @@
 <body>
 <div class="container">
     <div id="sform">
-        <!--에러 메세지 화면을 보여준다 -->
-
         <!--Security가 action login을 낚아 채서 화면을 보여준다. -->
 
         <form class="form-inline center" action="/login" method="POST">
@@ -25,6 +23,7 @@
             <span id="password" style="color:red;">올바른 비밀번호 형식이 아닙니다.</span><br/>
             <label onclick="document.getElementById('focus-password').focus()"></label>
 
+            <!--에러 메세지 화면을 보여준다 -->
             <div th:if="${param.error}">
                 <p th:text="${exception}" class="alert alert-danger"></p>
             </div>
