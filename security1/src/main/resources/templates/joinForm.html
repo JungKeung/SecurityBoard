@@ -12,26 +12,26 @@
         <form class="form-inline center"  onsubmit="emailCheck();" action="/join" method="POST">
 
             <!--이메일 -->
-            <input type="email" name="email" id="userEmail" class="focus-email" value=""
-                   placeholder="이메일 작성" autocomplete="off" style="text-align:center"/> <br/>
+            <input type="email" name="email" id="userEmail" class="input" value=""
+                   placeholder="이메일을 입력해주세요." autocomplete="off"/> <br/>
             <span id="EmailValidateMsg" style="display:none; color:red;" ></span><br/>
             <label onclick="document.getElementById('focus-email').focus()"></label>
             </br>
             <!--닉네임 -->
-            <input type="text" name="nickname" id="userNickName"  class="focus-nickname" value=""
-                   placeholder="닉네임 작성" autocomplete="off" style="text-align:center"/> <br/>
+            <input type="text" name="nickname" id="userNickName"  class="input" value=""
+                   placeholder="닉네임을 입력해주세요." autocomplete="off" /> <br/>
             <span id="nicknameValidateMsg"  style="display:none; color:red;"></span><br/>
             <label onclick="document.getElementById('focus-nickname').focus()"></label>
             </br>
             <!--1차 비밀번호 -->
-            <input type="password" name="password" id="userPassword" class="focus-password" value=""
-                   placeholder="비밀번호 작성" style="text-align:center"/><br/>
+            <input type="password" name="password" id="userPassword" class="input" value=""
+                   placeholder="패스워드를 입력해주세요."/><br/>
             <span id="passwordValidateMsg"  style="display:none; color:red;"></span><br/>
             <label onclick="document.getElementById('focus-password').focus()"></label>
             </br>
             <!--2차 비밀번호 -->
-            <input type="password" name="RePassword" id="userRePassword" class="focus-rePassword" value=""
-                   placeholder="비밀번호 재확인" style="text-align:center"/><br/>
+            <input type="password" name="RePassword" id="userRePassword" class="input" value=""
+                   placeholder="패스워드를 다시 입력해주세요."/><br/>
             <span id="rePasswordValidateMsg"  style="display:none; color:red;"></span><br/>
             <label onclick="document.getElementById('focus-rePassword').focus()"></label>
             <br/>
@@ -58,7 +58,7 @@
 </body>
 </html>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
+<script src="/js/common.js"></script>
 <script src="/js/joinForm.js"></script>
 
 
