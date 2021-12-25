@@ -13,26 +13,26 @@
 
             <!--이메일 -->
             <input type="email" name="email" id="userEmail" class="focus-email" value=""
-                   placeholder="이메일 작성" style="text-align:center"/> <br/>
+                   placeholder="이메일 작성" autocomplete="off" style="text-align:center"/> <br/>
             <span id="EmailValidateMsg" style="display:none; color:red;" ></span><br/>
             <label onclick="document.getElementById('focus-email').focus()"></label>
             </br>
             <!--닉네임 -->
             <input type="text" name="nickname" id="userNickName"  class="focus-nickname" value=""
-                   placeholder="닉네임 작성" style="text-align:center"/> <br/>
-            <span id="nickname"  style="display:none; color:red;">올바른 닉네임 형식이 아닙니다.</span><br/>
+                   placeholder="닉네임 작성" autocomplete="off" style="text-align:center"/> <br/>
+            <span id="nicknameValidateMsg"  style="display:none; color:red;"></span><br/>
             <label onclick="document.getElementById('focus-nickname').focus()"></label>
             </br>
             <!--1차 비밀번호 -->
             <input type="password" name="password" id="userPassword" class="focus-password" value=""
                    placeholder="비밀번호 작성" style="text-align:center"/><br/>
-            <span id="password"  style="display:none; color:red;">올바른 비밀번호 형식이 아닙니다.</span><br/>
+            <span id="passwordValidateMsg"  style="display:none; color:red;"></span><br/>
             <label onclick="document.getElementById('focus-password').focus()"></label>
             </br>
             <!--2차 비밀번호 -->
             <input type="password" name="RePassword" id="userRePassword" class="focus-rePassword" value=""
                    placeholder="비밀번호 재확인" style="text-align:center"/><br/>
-            <span id="rePassword"  style="display:none; color:red;">올바른 비밀번호 형식이 아닙니다.</span><br/>
+            <span id="rePasswordValidateMsg"  style="display:none; color:red;"></span><br/>
             <label onclick="document.getElementById('focus-rePassword').focus()"></label>
             <br/>
 

@@ -1,6 +1,6 @@
 package com.cos.security1;
 
-import com.cos.security1.service.UserService;
+import com.solution.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

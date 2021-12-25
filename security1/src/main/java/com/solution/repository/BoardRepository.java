@@ -1,6 +1,6 @@
-package com.cos.security1.repository;
+package com.solution.repository;
 
-import com.cos.security1.model.Board;
+import com.solution.model.Board;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
