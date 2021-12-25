@@ -1,10 +1,11 @@
-package com.cos.security1.controller;
+package com.solution.controller;
 
 
-import com.cos.security1.model.Board;
-import com.cos.security1.model.User;
-import com.cos.security1.repository.PagingRepository;
-import com.cos.security1.service.BoardService;
+import com.solution.config.auth.PrincipalDetail;
+import com.solution.model.Board;
+import com.solution.model.User;
+import com.solution.repository.PagingRepository;
+import com.solution.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,7 +20,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 

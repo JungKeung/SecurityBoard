@@ -1,10 +1,9 @@
-package com.cos.security1.model;
+package com.solution.model;
 
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 

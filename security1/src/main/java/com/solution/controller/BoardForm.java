@@ -1,12 +1,10 @@
-package com.cos.security1.controller;
+package com.solution.controller;
 
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.validation.constraints.NotEmpty;
-import java.util.Date;
 
 @Getter @Setter
 public class BoardForm {

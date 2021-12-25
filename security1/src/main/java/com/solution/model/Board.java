@@ -1,4 +1,4 @@
-package com.cos.security1.model;
+package com.solution.model;
 
 
 import lombok.Data;

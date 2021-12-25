@@ -1,9 +1,9 @@
-package com.cos.security1.service;
+package com.solution.service;
 
 
-import com.cos.security1.model.User;
-import com.cos.security1.repository.UserDuplicateRepository;
-import com.cos.security1.repository.UserRepository;
+import com.solution.model.User;
+import com.solution.repository.UserDuplicateRepository;
+import com.solution.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

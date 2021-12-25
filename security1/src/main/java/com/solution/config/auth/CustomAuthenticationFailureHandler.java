@@ -1,4 +1,4 @@
-package com.cos.security1.config.auth;
+package com.solution.config.auth;
 
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InsufficientAuthenticationException;

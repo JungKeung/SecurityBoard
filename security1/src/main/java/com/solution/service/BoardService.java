@@ -1,14 +1,13 @@
-package com.cos.security1.service;
+package com.solution.service;
 
-import com.cos.security1.model.Board;
-import com.cos.security1.model.User;
-import com.cos.security1.repository.BoardRepository;
-import com.cos.security1.repository.PagingRepository;
-import com.cos.security1.repository.UserRepository;
+import com.solution.model.Board;
+import com.solution.model.User;
+import com.solution.repository.BoardRepository;
+import com.solution.repository.PagingRepository;
+import com.solution.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

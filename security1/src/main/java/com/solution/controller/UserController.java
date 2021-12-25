@@ -1,8 +1,8 @@
-package com.cos.security1.controller;
+package com.solution.controller;
 
-import com.cos.security1.model.User;
-import com.cos.security1.repository.UserRepository;
-import com.cos.security1.service.UserService;
+import com.solution.model.User;
+import com.solution.repository.UserRepository;
+import com.solution.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -47,15 +47,17 @@ public class UserController {
         return "loginForm";
     }
 
-
     //로그인 페이지 이동
     @GetMapping("/loginForm")
     public String loginForm(){
         return "loginForm";
     }
 
-    //회원가입 페이지 이동동
-    @PostMapping("/joinForm")
+    /**
+     * 회원가입 페이지
+     * @return joinForm.html
+     */
+    @GetMapping("/joinForm")
     public String joinForm(){
         return "joinForm";
     }
@@ -75,6 +77,7 @@ public class UserController {
         userRepository.save(user); //회원가입 잘됨. 이렇게 하면 비밀번호 노출되어 시큐리티로 로그인 안됨
         return "redirect:board/list";
     }
+
     //ResponseBody는 JSON으로 변환 작업이 이루어진다.
     @ResponseBody
     @RequestMapping(value = "/existsEmail/{email}", method = RequestMethod.GET)
