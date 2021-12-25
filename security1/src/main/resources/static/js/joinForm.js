@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    // 페이지 로드 후 바로 이메일 입력 가능하도록 설정
+    $('#userEmail').focus();
+
     $(document).on('click', '#joinButton', function(){
         var userEmail = document.getElementById("userEmail").value;
         var userNickName = document.getElementById("userNickName").value;
@@ -32,13 +35,11 @@ $(document).ready(function(){
             return false;
         }
 
-        if (!(userPassword === userRePassword)) {
+        if (userPassword !== userRePassword) {
             $('#rePasswordValidateMsg').text("비밀번호가 같지 않습니다");
             $('#rePasswordValidateMsg').show();
 
             return false;
-        } else {
-            return;
         }
     });
 
@@ -64,6 +65,7 @@ $(document).ready(function(){
             }
         });
     });
+
     // 이메일 이벤트 처리
 	$(document).on('keydown', '#userEmail', function() {
 	    var userEmail = $('#userEmail').val();
@@ -76,6 +78,7 @@ $(document).ready(function(){
             $('#EmailValidateMsg').show();
 	    }
   	});
+
   	// 닉네임 이벤트 처리
   	$(document).on('keydown', '#userNickName', function() {
     	var nickname = $('#userNickName').val();
@@ -86,6 +89,7 @@ $(document).ready(function(){
     	    $('#nicknameValidateMsg').show();
     	}
     });
+
     // 비밀번호 이벤트 처리
     $(document).on('keydown', '#userPassword', function() {
 	    var password = $('#userPassword').val();
@@ -96,6 +100,7 @@ $(document).ready(function(){
 	        $('#passwordValidateMsg').show();
 	    }
   	});
+
   	// 2차 비밀번호 이벤트 처리
 	$(document).on('keydown', '#userRePassword', function() {
 	    var rePassword = $('#userRePassword').val();
@@ -107,48 +112,6 @@ $(document).ready(function(){
             $('#rePasswordValidateMsg').show();
         }
     });
-
-  	//이메일 유효성 검사
-    function validateEmail(email) {
-        var filter = /^[a-z0-9\.\-_]+@([a-z0-9\-]+\.)+[a-z]{2,3}$/
-        if (filter.test(email)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-  	//닉네임 유효성 검사
-    function validateNickname(nickname) {
-        var filter = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,10}$/
-        if (filter.test(nickname)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    //비밀번호 유효성 검사
-    function validatePassword(password){
-        var pwd = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,15}$/
-        if (pwd.test(password)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    //2차 비밀번호 유효성 검사
-    function validateRePassword(rePassword){
-        var pwd = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,15}$/
-        if (pwd.test(rePassword)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    //focus 이벤트
-    $('.focused-email').focus();
 
     //체크박스 동의 이벤트
     $("#boardAgreementCheck").click(function(){
