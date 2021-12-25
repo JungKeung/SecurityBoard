@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @RequiredArgsConstructor
 public class LoginController {
+    // windows10_hk push test
     /**
      * 로그인 성공 시 메인화면 이동
      * @return redirect:/board/list
