@@ -16,7 +16,7 @@
     </div>
     <!--  로그인한 상태가 아니라면 login 버튼 출력  -->
     <div th:unless="${#authorization.expr('isAuthenticated()')}">
-        <form th:action="@{/loginForm}" method="get" style="float:right;">
+        <form th:action="@{/login}" method="get" style="float:right;">
             <button type="submit" class="button">로그인</button>
         </form>
     </div>
