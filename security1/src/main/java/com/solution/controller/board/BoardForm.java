@@ -1,4 +1,4 @@
-package com.solution.controller;
+package com.solution.controller.board;
 
 
 import lombok.Getter;

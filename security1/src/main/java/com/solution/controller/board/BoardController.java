@@ -1,7 +1,6 @@
-package com.solution.controller;
+package com.solution.controller.board;
 
 
-import com.solution.config.auth.PrincipalDetail;
 import com.solution.model.Board;
 import com.solution.model.User;
 import com.solution.repository.PagingRepository;
@@ -113,7 +112,6 @@ public class BoardController {
         int nowPage = list.getPageable ().getPageNumber () + 1;
         int startPage = Math.max(nowPage -4, 1);
         int endPage = Math.min(nowPage + 5 , list.getTotalPages ());
-
 
         model.addAttribute ("board", board);
         model.addAttribute ( "list", list);
