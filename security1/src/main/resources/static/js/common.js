@@ -23,6 +23,15 @@ function validatePassword(userPassword){
     }
 }
 
-function aaa() {
-    console.log(1);
+/*
+ * 닉네임 형식 정규식
+ * 2~10글자 입력제한
+ */
+function validateNickname(nickname) {
+    var filter = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,10}$/
+    if (filter.test(nickname)) {
+        return true;
+    } else {
+        return false;
+    }
 }
