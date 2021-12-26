@@ -9,10 +9,11 @@ import javax.validation.constraints.NotEmpty;
 @Getter @Setter
 public class BoardForm {
 
-    @NotEmpty(message = "제목은 필수 입니다")
+    @NotEmpty(message = "게시글 제목을 입력해주세요.")
     private String title;
 
-    private String context;
+    @NotEmpty(message = "게시글 내용을 입력해주세요.")
+    private String content;
 
 }
 
