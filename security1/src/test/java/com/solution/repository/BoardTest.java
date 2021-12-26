@@ -20,9 +20,18 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 public class BoardTest {
     @Autowired BoardRepository boardRepository;
-    @Autowired
-    BoardController boardController;
 
+    @Test
+    public void 게시글_수정하기() {
+        Board detailBoard = boardRepository.findById(1l).get();
+        detailBoard.setTitle("수정될 제목");
+        detailBoard.setContent("수정될 내용");
+        boardRepository.save(detailBoard);
+
+        Board detailBoard2 = boardRepository.findById(1l).get();
+        assertEquals("정상적으로 수정되었습니다.",detailBoard2.getTitle(), detailBoard.getTitle());
+    }
+    
     @Test
     public void 특정_게시글_가져오기() {
 
@@ -30,6 +39,7 @@ public class BoardTest {
 
         assertEquals("1 번 게시글이 맞다.","dd", b.getTitle());
     }
+    
     @Test
     public void 게시글제목검색() {
         Pageable pageable= PageRequest.of(0, 10, Sort.Direction.DESC, "id");
