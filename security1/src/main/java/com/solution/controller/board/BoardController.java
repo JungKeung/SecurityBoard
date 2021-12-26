@@ -2,7 +2,7 @@ package com.solution.controller.board;
 
 
 import com.solution.model.Board;
-import com.solution.model.User;
+import com.solution.repository.BoardRepository;
 import com.solution.repository.PagingRepository;
 import com.solution.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -28,6 +27,7 @@ import java.util.List;
 public class BoardController {
 
     private final BoardService boardService;
+    private final BoardRepository boardRepository;
     private final PagingRepository pagingRepository;
 
     // 글 작성 페이지 가져오기
@@ -88,39 +88,41 @@ public class BoardController {
         return "redirect:/board/list";
     }
 
-
     // 게시글 삭제
     @GetMapping("/board/delete")
-    public String boardDelete(Long id){
+    public String deleteBoard(Long id) {
         pagingRepository.deleteById(id);
         return "redirect:/board/list";
     }
 
-    //게시글 목록 가져오기
+    /**
+     * 글 목록 가져오기
+     * @param titleSearch 제목 검색어
+     * @return board/boardList.html
+     */
     @GetMapping("/board/list")
-    public String boardList(Model model,@PageableDefault(page = 0, size =10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable
-            ,String searchKeyword, User user){
-        List<Board> board = boardService.findBoards ();
-        Page<Board> list = null;
+    public String getBoardList( Model model
+            , @PageableDefault(page = 0, size =10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable
+            , String titleSearch) {
 
-        if(searchKeyword == null){
-            list =boardService.boardList (pageable);
-        }else {
-            list =boardService.boardSearchList (searchKeyword, pageable );
+        // 페이징 처리를 하여 게시글 가져오기
+        Page<Board> boards = null;
+        if(titleSearch == null) {
+            boards = boardRepository.findAll(pageable);
+        } else { // 검색된 제목이 있는 경우
+            boards = boardRepository.findByTitleContaining(titleSearch, pageable);
         }
 
-        int nowPage = list.getPageable ().getPageNumber () + 1;
+        // 페이징 처리를 위한 로직
+        int nowPage = boards.getPageable().getPageNumber() + 1;
         int startPage = Math.max(nowPage -4, 1);
-        int endPage = Math.min(nowPage + 5 , list.getTotalPages ());
+        int endPage = Math.min(nowPage + 5 , boards.getTotalPages());
 
-        model.addAttribute ("board", board);
-        model.addAttribute ( "list", list);
+        model.addAttribute ("boards", boards);
         model.addAttribute ( "nowPage", nowPage );
         model.addAttribute ( "startPage", startPage );
         model.addAttribute ( "endPage", endPage );
 
         return "board/boardList";
     }
-
-
 }
