@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import java.util.Optional;
 
 
 @Controller
@@ -38,6 +39,18 @@ public class JoinController {
 
         // 유저 권한설정
         user.setRole("ROLE_USER");
+
+        // 이메일 중복체크
+        Optional<Boolean> existsEmail = userRepository.existsByEmail(user.getEmail());
+        if (existsEmail.get().equals(true)) {
+            return new ResultForm(-9998,"이메일 중복", null);
+        }
+
+        // 닉네임 중복체크
+        Optional<Boolean> existsNickname = userRepository.existsByNickname(user.getNickname());
+        if (existsNickname.get().equals(true)) {
+            return new ResultForm(-9997,"닉네임 중복", null);
+        }
 
         //인코딩 후 패스워드 암호화
         String userPassword = user.getPassword();
