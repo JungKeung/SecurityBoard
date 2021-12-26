@@ -28,29 +28,35 @@ public class BoardController {
     private final BoardService boardService;
     private final BoardRepository boardRepository;
 
-    // 글 작성 페이지 가져오기
+    /**
+     * 게시글 작성 페이지
+     * @return board/boardForm.html
+     */
     @GetMapping("/board")
-    public String boardCreated(Model model){
-        model.addAttribute ( "boardForm", new BoardForm());
-        return "board/createdBoard";
+    public String getBoardForm(Model model){
+        model.addAttribute ("boardForm", new BoardForm());
+        return "board/boardForm";
     }
 
-    // 글 작성 후 저장 하기
+    /**
+     * 게시글 등록
+     * @param boardForm 게시글 제목 및 내용
+     * @return
+     */
     @PostMapping("/board")
-    public String boardCreate(@Valid BoardForm form, BindingResult result, Authentication authentication){
+    public String createBoardForm(@Valid BoardForm boardForm, BindingResult result, Authentication authentication){
 
         if (result.hasErrors()) {
-            return "board/createdBoard";
+            return "board/boardForm";
         }
 
         Board board = new Board() ;
-        board.setTitle (form.getTitle ());
-        String email = authentication.getName ();
-        board.setContext (form.getContext());
-        boardService.created (email, board);
+        board.setTitle(boardForm.getTitle());
+        board.setContent(boardForm.getContent());
+        String email = authentication.getName();
+        boardService.createBoardForm(email, board);
 
         return "redirect:board/list";
-
     }
 
     // 글 상세페이지 가져오기
@@ -80,7 +86,7 @@ public class BoardController {
 
         Board boardTemp = boardService.boardDetail(id);
         boardTemp.setTitle (board.getTitle());
-        boardTemp.setContext (board.getContext());
+        boardTemp.setContent (board.getContent());
         boardService.update (boardTemp);
 
         return "redirect:/board/list";
