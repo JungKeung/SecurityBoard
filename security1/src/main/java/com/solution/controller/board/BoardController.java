@@ -59,16 +59,19 @@ public class BoardController {
         return "redirect:board/list";
     }
 
-    // 글 상세페이지 가져오기
+    /**
+     * 게시글 상세페이지 가져오기
+     * @param id 게시글 id 값
+     * @return
+     */
     @GetMapping("/board/Detail")
-    public String boardDetail(Board board, Model model, Long id){
-        model.addAttribute("board", boardService.boardDetail(id));
-        //Principal : 보호된 대상에 접근하는 유저
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        UserDetails user = (UserDetails)principal; // 세션에 있는 유저 객체 가져오기
+    public String getBoardDetail(Model model, Long id, Authentication authentication){
 
-        System.out.println (user.getUsername());
-        model.addAttribute("userEmail", user.getUsername());
+        Board boardDetail = boardRepository.findById(id).get();
+
+        String userEmail = authentication.getName(); // 세션에 있는 유저 이메일 가져오기
+        model.addAttribute("userEmail", userEmail);
+        model.addAttribute("board", boardDetail);
         return "board/boardDetail ";
     }
 
