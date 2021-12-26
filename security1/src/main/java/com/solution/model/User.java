@@ -37,10 +37,10 @@ public class User {
     /**
      * 개인정보 이용약관 (필수)
      */
-    private boolean isAgreePrivacyTerms;
+    private Boolean isAgreePrivacyTerms;
 
     /**
      * 마케팅 이용약관 (선택)
      */
-    private boolean isAgreeMarketingTerms;
+    private Boolean isAgreeMarketingTerms;
 }
