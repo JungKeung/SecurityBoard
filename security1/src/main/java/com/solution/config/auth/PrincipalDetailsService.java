@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import java.util.Optional;
 
 // 발동 조건.
 // 시큐리티 설정에서 SecurityConfig -> loginProcessingUrl("/login");
@@ -26,11 +27,11 @@ public class PrincipalDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
         // findByUsername이 없으므로 Repository에 작성해줘야한다.
-        User userEntity = userRepository.findByEmail(email);
+        Optional<User> userEntity = userRepository.findByEmail(email);
 
         // user 를 찾으면 PrincipalDetail 에 return userEntity 해주고, 없으면 return null
         // 시큐리티 session(내부 Authentication(내부 UserDetail))
-        if(userEntity != null){
+        if(userEntity.isPresent()){
             return new PrincipalDetail (userEntity);
         }
         return null;

@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,8 +23,8 @@ public class BoardService {
 
     //게시글 저장
     public Board created(String email, Board board){
-        User user = userRepository.findByEmail ( email );
-        board.setUser(user);
+        Optional<User> user = userRepository.findByEmail(email);
+        board.setUser(user.get());
         return boardRepository.save(board);
     }
 

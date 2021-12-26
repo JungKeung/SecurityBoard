@@ -12,12 +12,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Optional;
 
 // Security Session 영역이 있는데 Authentication이 있어야하고 이 안에는 UserDetails 타입 이여야한다.
 public class PrincipalDetail implements UserDetails {
 
-    private User user;
-    public PrincipalDetail(User user){
+    private Optional<User> user;
+    public PrincipalDetail(Optional<User> user){
         this.user = user;
     }
 
@@ -28,7 +29,7 @@ public class PrincipalDetail implements UserDetails {
         collect.add ( new GrantedAuthority () {
             @Override
             public String getAuthority() {
-                return user.getRole();
+                return user.get().getRole();
             }
         });
         return collect;
@@ -36,11 +37,11 @@ public class PrincipalDetail implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return user.get().getPassword();
     }
 
     public String getUserEmail() {
-        return user.getEmail ();
+        return user.get().getEmail ();
     }
 
     @Override
@@ -48,7 +49,7 @@ public class PrincipalDetail implements UserDetails {
      * 사용하지 않음
      */
     public String getUsername() {
-        return user.getEmail ();
+        return user.get().getEmail ();
     }
 
     //계정 완료되었는지
