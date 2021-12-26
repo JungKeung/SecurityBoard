@@ -1,4 +1,5 @@
 package com.solution.controller.user;
+import com.solution.controller.ResultForm;
 import com.solution.model.User;
 import com.solution.repository.UserRepository;
 import com.solution.service.UserService;
@@ -31,20 +32,25 @@ public class JoinController {
      * @param user Model
      * @return redirect:board/list
      */
+    @ResponseBody
     @PostMapping("/join")
-    public String join(User user){
+    public ResultForm join(User user){
+
         // 유저 권한설정
         user.setRole("ROLE_USER");
 
         //인코딩 후 패스워드 암호화
         String userPassword = user.getPassword();
         String encPassword = bCryptPasswordEncoder.encode(userPassword);
+        user.setPassword(encPassword);
 
         //유저 회원가입 처리
-        user.setPassword(encPassword);
-        userRepository.save(user);
+        User savedUser = userRepository.save(user);
+        if (savedUser == null) {
+            return new ResultForm(-9999,"회원가입 실패", null);
+        }
 
-        return "redirect:board/list";
+        return new ResultForm(0,"회원가입 성공", null);
     }
 
     //ResponseBody는 JSON으로 변환 작업이 이루어진다.
