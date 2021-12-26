@@ -16,7 +16,7 @@
     <h2 th:text="${board.title}"></h2>
     <hr style="red"/>
 
-    <p th:text="${board.context}">내용이 들어갈 부분입니다.</p>
+    <p th:text="${board.content}">내용이 들어갈 부분입니다.</p>
 
     <div th:if="${board.user.email == userEmail}">
         <form th:action="@{/board/modify/{id}(id = ${board.id})}" style="float:right;">
