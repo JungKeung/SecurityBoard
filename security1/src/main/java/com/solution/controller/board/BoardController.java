@@ -72,27 +72,38 @@ public class BoardController {
         String userEmail = authentication.getName(); // 세션에 있는 유저 이메일 가져오기
         model.addAttribute("userEmail", userEmail);
         model.addAttribute("board", boardDetail);
-        return "board/boardDetail ";
+        return "board/boardDetail";
     }
 
 
-    // 글 수정 화면 페이지
+    /**
+     * 글 수정 페이지 이동
+     * @param id 게시글 id 값
+     * @return board/boardModify.html
+     */
     @GetMapping("/board/modify/{id}")
-    public String boardModify(@PathVariable("id") Long id, Model model){
-        model.addAttribute ( "board", boardService.boardDetail(id));
+    public String getBoardModify(@PathVariable("id") Long id, Model model) {
+        // 수정이 될 특정 페이지 조회
+        Board boardDetail = boardRepository.findById(id).get();
+        model.addAttribute ( "board", boardDetail);
         return  "board/boardModify";
     }
 
-    // 글 수정 후 저장
-    @PostMapping("board/modify/{id}") //@PathVariable url에서 각 구분자에 들어오는 값 처리
-    public String boardUpdate(@PathVariable("id") Long id, Board board) throws  Exception{
+    /**
+     * 글 수정
+     * @param id 게시글 id 값
+     */
+    @PostMapping("/board/modify/{id}")
+    public String updateBoardDetail(@PathVariable("id") Long id, Board board) {
 
-        Board boardTemp = boardService.boardDetail(id);
-        boardTemp.setTitle (board.getTitle());
-        boardTemp.setContent (board.getContent());
-        boardService.update (boardTemp);
+        // 특정 게시물에 변경될 값을 적용
+        Board detailBoard = boardRepository.findById(id).get();
+        detailBoard.setTitle(board.getTitle());
+        detailBoard.setContent(board.getContent());
 
-        return "redirect:/board/list";
+        boardRepository.save(detailBoard);
+
+        return "redirect:/board/Detail?id="+id;
     }
 
     // 게시글 삭제
