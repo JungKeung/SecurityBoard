@@ -59,8 +59,6 @@ $(document).ready(function(){
             'isAgreePrivacyTerms' : isAgreePrivacyTerms,
             'isAgreeMarketingTerms' : isAgreeMarketingTerms
         }
-        console.log('request');
-        console.log(data);
 
         $.ajax({
             url:'/join',
@@ -70,40 +68,27 @@ $(document).ready(function(){
             success : function(result) {
                 if (result.errorCode === 0) {
                     console.log(result.data);
-                    //alert("회원가입이 완료되었습니다.");
-                    //location.href = "/login";
+                    alert("회원가입이 완료되었습니다.");
+                    location.href = "/login";
+                } else if (result.errorCode === -9997) {
+                    $('#nicknameValidateMsg').text("중복된 닉네임이 존재합니다.");
+                    $('#nicknameValidateMsg').show();
+                    $('.focus-nickname').focus();
+
+                } else if (result.errorCode === -9998) {
+                    $('#EmailValidateMsg').text("중복된 이메일이 존재합니다.");
+                    $('#EmailValidateMsg').show();
+                    $('.focus-email').focus();
+
                 } else {
-                    alert("회원가입이 실패하였습니다.");
+                    alert("접근이 원활하지 않습니다. 잠시 후 다시 시도해주세요.");
                     console.log(result.errorCode);
                     console.log(result.errorMessage);
                 }
             },
             error : function(err) {
                 console.log(err);
-                alert("잠시후 다시 시도해주세요.");
-            }
-        });
-    });
-
-    $(document).on('click','#checkEmail',function(){
-
-    	var email = $('#userEmail').val();
-
-        $.ajax({
-            url:'/existsEmail/{email}',
-            type:'GET',
-            data: {'email' : $('userEmail').val()},
-            dataType : "json",
-            success : function(data) {
-                if(data == true){
-                    alert("중복된 이메일입니다.");
-                } else {
-                    return;
-                }
-            },
-            error : function(data) {
-                console.log(data);
-                alert("잠시후 다시 시도해주세요.");
+                alert("접근이 원활하지 않습니다. 잠시 후 다시 시도해주세요.");
             }
         });
     });
