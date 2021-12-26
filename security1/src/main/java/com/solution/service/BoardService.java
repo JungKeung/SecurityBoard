@@ -6,8 +6,6 @@ import com.solution.repository.BoardRepository;
 import com.solution.repository.PagingRepository;
 import com.solution.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,20 +42,4 @@ public class BoardService {
         return pagingRepository.findById(id).get();
     }
 
-
-    //게시물 리스트 페이지 처리
-    public Page<Board> boardList(Pageable pageable) {
-
-        return pagingRepository.findAll ( pageable );
-    }
-
-    //게시물 리스트에 검색하는 기능
-    public Page<Board> boardSearchList(String searchKeyword, Pageable pageable) {
-
-        return pagingRepository.findByTitleContaining ( searchKeyword, pageable );
-    }
-
-
-
 }
-
