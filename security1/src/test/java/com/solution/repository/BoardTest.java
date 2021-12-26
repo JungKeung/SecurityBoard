@@ -1,5 +1,6 @@
 package com.solution.repository;
 
+import com.solution.controller.board.BoardController;
 import com.solution.model.Board;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,8 +20,16 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 public class BoardTest {
     @Autowired BoardRepository boardRepository;
+    @Autowired
+    BoardController boardController;
 
+    @Test
+    public void 특정_게시글_가져오기() {
 
+        Board b = boardRepository.findById(1L).get();
+
+        assertEquals("1 번 게시글이 맞다.","dd", b.getTitle());
+    }
     @Test
     public void 게시글제목검색() {
         Pageable pageable= PageRequest.of(0, 10, Sort.Direction.DESC, "id");
