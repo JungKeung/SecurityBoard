@@ -3,7 +3,6 @@ package com.solution.controller.board;
 
 import com.solution.model.Board;
 import com.solution.repository.BoardRepository;
-import com.solution.repository.PagingRepository;
 import com.solution.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -28,7 +27,6 @@ public class BoardController {
 
     private final BoardService boardService;
     private final BoardRepository boardRepository;
-    private final PagingRepository pagingRepository;
 
     // 글 작성 페이지 가져오기
     @GetMapping("/board")
@@ -91,7 +89,7 @@ public class BoardController {
     // 게시글 삭제
     @GetMapping("/board/delete")
     public String deleteBoard(Long id) {
-        pagingRepository.deleteById(id);
+        boardRepository.deleteById(id);
         return "redirect:/board/list";
     }
 

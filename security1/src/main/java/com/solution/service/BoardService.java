@@ -3,7 +3,6 @@ package com.solution.service;
 import com.solution.model.Board;
 import com.solution.model.User;
 import com.solution.repository.BoardRepository;
-import com.solution.repository.PagingRepository;
 import com.solution.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,6 @@ import java.util.Optional;
 public class BoardService {
 
     private final BoardRepository boardRepository;
-    private final PagingRepository pagingRepository;
     private final UserRepository userRepository;
 
     //게시글 저장
@@ -39,7 +37,7 @@ public class BoardService {
 
     //게시글 화면 보여주기
     public Board boardDetail (Long id) {
-        return pagingRepository.findById(id).get();
+        return boardRepository.findById(id).get();
     }
 
 }
