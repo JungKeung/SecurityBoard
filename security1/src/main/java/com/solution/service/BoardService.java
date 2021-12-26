@@ -17,8 +17,14 @@ public class BoardService {
     private final BoardRepository boardRepository;
     private final UserRepository userRepository;
 
-    //게시글 저장
-    public Board created(String email, Board board){
+    /**
+     * 게시글 저장
+     * @param email 유저 이메일
+     * @param board 게시글 제목 및 내용
+     * @return
+     */
+    public Board createBoardForm(String email, Board board){
+        
         Optional<User> user = userRepository.findByEmail(email);
         board.setUser(user.get());
         return boardRepository.save(board);
