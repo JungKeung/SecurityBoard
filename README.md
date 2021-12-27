@@ -22,7 +22,7 @@
 <img width="854" alt="5" src="https://user-images.githubusercontent.com/81599684/147439748-6329047a-a1b6-4e14-b0c6-538238d76ed9.png">
 
 ## 🔧 기술스택
-<h3> JavaScript(Jquery), Thymeleaf, Spring Boot(Java), Spring Security, JPA, MySql <h3>
+<h3> JavaScript(Jquery), Thymeleaf, Spring Boot(Java), Spring Security, JPA, MySql, Git <h3>
   
 ## ✏️ ERD
 <img width="1381" alt="화면 캡처 2021-12-27 135007" src="https://user-images.githubusercontent.com/81599684/147435612-7786e629-3831-4701-b0ef-8fc968d275e7.png">
