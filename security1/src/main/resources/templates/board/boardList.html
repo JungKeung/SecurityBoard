@@ -23,7 +23,7 @@
 
 
     <form th:action="@{/board/list}" method="get">
-        <input type="text" name="searchKeyword" placeholder="제목를 검색해주세요">
+        <input type="text" name="titleSearch" placeholder="제목를 검색해주세요">
         <button type="submit">검색</button>
 
     </form>
@@ -41,7 +41,7 @@
             </thead>
 
             <tbody>
-            <tr th:each="board : ${list}">
+            <tr th:each="board : ${boards}">
                 <td>
                     <a th:text="${board.title}" th:href="@{/board/Detail(id=${board.id})}"></a>
                 </td>
@@ -59,7 +59,7 @@
 
         <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
             <a th:if="${page != nowPage}"
-               th:href="@{/board/list(page = ${page -1}, searchKeyword = ${param.searchKeyword})}"
+               th:href="@{/board/list(page = ${page - 1}, titleSearch = ${param.titleSearch})}"
                th:text="${page}"></a>
             <strong th:if="${page == nowPage}" th:text="${page}" style="color: red"></strong>
         </th:block>
@@ -68,4 +68,4 @@
     <div th:replace="fragments/footer :: footer"/>
 </div>
 </body>
-</html>`
+</html>

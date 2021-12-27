@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/header :: header"/>
+    <link href="/css/board/boardForm.css" rel="stylesheet">
+    <body>
+        <div class="container">
+            <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+
+            <form role="form" action="/board" th:object="${boardForm}" method="post">
+
+                <div class="layout">
+                    <label th:for="title"></label>
+                    <input style="font-size:30px;  border:none" type="text" th:field="*{title}" placeholder="제목를 입력하세요.">
+                </div>
+                <hr width="600px"/>
+
+                <div class="layout">
+                    <label th:for="content"></label>
+                    <textarea style=" border:none " type="text" th:field="*{content}" placeholder="내용를 입력하세요."/>
+
+                    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
+                       th:class="${#fields.hasErrors('content')}? 'fieldError' : ''"></p>
+                    <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}"
+                       th:class="${#fields.hasErrors('content')}? 'fieldError' : ''"></p>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="float:right;">저장</button>
+            </form>
+
+            <br/>
+            <div th:replace="fragments/footer :: footer"/>
+        </div> <!-- /container -->
+    </body>
+</html>

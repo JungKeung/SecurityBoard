@@ -1,6 +1,7 @@
+
 .fieldError {
- border-color: #bd2130;
- }
+    color: red;
+}
  .layout{
     width : 500px;
     margin : 0 auto;

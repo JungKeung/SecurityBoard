@@ -19,8 +19,10 @@ public class Board {
 
     @Id @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
+
     private String title;
-    private String context;
+
+    private String content;
 
     @CreationTimestamp
     private Date createdDate;
