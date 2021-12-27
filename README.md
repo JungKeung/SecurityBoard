@@ -15,17 +15,18 @@
 <h3> 1) 유저 회원가입 페이지 </h3>
 <img width="750" alt="1" src="https://user-images.githubusercontent.com/81599684/147435629-317febbd-8733-4970-aa22-2fa69a11baf6.png">
 <h3> 2) 유저 로그인 페이지 </h3>
-<img width="752" alt="2" src="https://user-images.githubusercontent.com/81599684/147435637-8b2a39bc-5f39-41f0-af57-405c1ce8f0d0.png">
+<img width="910" alt="10" src="https://user-images.githubusercontent.com/81599684/147468676-65ffb4c3-01e1-4169-b6c1-bfb4d88fc5bb.png">
 <h3> 3) 게시물 조회 페이지 </h3>
 <img width="755" alt="3" src="https://user-images.githubusercontent.com/81599684/147435642-aadf5bc1-af60-4159-9572-8b66dc8430b2.png">
 <h3> 4) 게시물 상세 페이지 </h3>
-<img width="854" alt="5" src="https://user-images.githubusercontent.com/81599684/147439748-6329047a-a1b6-4e14-b0c6-538238d76ed9.png">
+<img width="724" alt="11" src="https://user-images.githubusercontent.com/81599684/147468334-b732a082-0ef7-418b-ace6-977ffff99731.png">
 
 ## 🔧 기술스택
 <h3> JavaScript(Jquery), Thymeleaf, Spring Boot(Java), Spring Security, JPA, MySql, Git <h3>
   
 ## ✏️ ERD
-<img width="1381" alt="화면 캡처 2021-12-27 135007" src="https://user-images.githubusercontent.com/81599684/147435612-7786e629-3831-4701-b0ef-8fc968d275e7.png">
+<img width="1227" alt="12" src="https://user-images.githubusercontent.com/81599684/147468502-f6c860d6-d0f1-4c6b-a329-68af14940538.png">
+
   
 ## 🤼‍♂️ 개발자
   이중경 (Jungkeung LEE)
