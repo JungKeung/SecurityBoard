@@ -1,6 +1,7 @@
 package com.solution.controller.board;
 
 
+import com.solution.controller.ResultForm;
 import com.solution.model.Board;
 import com.solution.repository.BoardRepository;
 import com.solution.service.BoardService;
@@ -106,11 +107,15 @@ public class BoardController {
         return "redirect:/board/Detail?id="+id;
     }
 
-    // 게시글 삭제
+    /**
+     * 게시 글 삭제
+     * @param id 게시글 id 값
+     */
     @GetMapping("/board/delete")
-    public String deleteBoard(Long id) {
+    @ResponseBody
+    public ResultForm deleteBoard(@RequestParam(name="id") Long id) {
         boardRepository.deleteById(id);
-        return "redirect:/board/list";
+        return new ResultForm(0,"게시물 삭제 성공", null);
     }
 
     /**
