@@ -16,8 +16,8 @@
 
 <img width="755" alt="3" src="https://user-images.githubusercontent.com/81599684/147435642-aadf5bc1-af60-4159-9572-8b66dc8430b2.png">
 
-<img width="755" alt="5" src="https://user-images.githubusercontent.com/81599684/147438812-b3e3c775-9656-40ee-a675-94ee911eb955.png">
 
+<img width="854" alt="5" src="https://user-images.githubusercontent.com/81599684/147439748-6329047a-a1b6-4e14-b0c6-538238d76ed9.png">
 
 ## 🔧 Tech Stack
 
