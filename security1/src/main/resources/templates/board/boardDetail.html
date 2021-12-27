@@ -22,7 +22,7 @@
             <form th:action="@{/board/modify/{id}(id = ${board.id})}" style="float:right;">
                 <button type="submit " class="btn btn-primary">수정</button>
             </form>
-            <button type="submit " id="btnDelete"class="btn btn-primary">삭제</button>
+            <button type="submit " id="btnDelete"class="btn btn-primary" style="float:right;">삭제</button>
             <input type="hidden" id="boardId" th:value="${board.id}">
         </div>
     </div>
