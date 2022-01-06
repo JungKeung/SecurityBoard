@@ -1,7 +1,8 @@
 package com.solution.repository;
 
-import com.solution.controller.board.BoardController;
 import com.solution.model.Board;
+import com.solution.model.User;
+import com.solution.service.BoardService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,16 +11,20 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
+@WebAppConfiguration
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class BoardTest {
     @Autowired BoardRepository boardRepository;
+    @Autowired BoardService boardService;
+
 
     @Test
     public void 게시글_수정하기() {
@@ -39,16 +44,28 @@ public class BoardTest {
 
         assertEquals("1 번 게시글이 맞다.","dd", b.getTitle());
     }
-    
+
     @Test
     public void 게시글제목검색() {
         Pageable pageable= PageRequest.of(0, 10, Sort.Direction.DESC, "id");
-
-        Page<Board> items = boardRepository.findByTitleContaining("dsfadfsadsf", pageable);
-        System.out.println("===========================================================");
+        Page<Board> items = boardRepository.findByTitleContaining("dd", pageable);
         System.out.println(items.get().count());
-        System.out.println("===========================================================");
     }
+
+    @Test
+    public void 게시물내용검색() {
+        Pageable pageable = PageRequest.of ( 0, 10, Sort.Direction.DESC, "id" );
+        Page<Board> board = boardRepository.findByContentContaining ( "dd", pageable );
+        System.out.println ( board.get ().count () );
+    }
+
+    @Test
+    public void 게시물작성자검색() {
+        Pageable pageable = PageRequest.of ( 0, 10, Sort.Direction.DESC, "id" );
+        Page<Board> board = boardRepository.findByUserEmailContaining( "vv323@naver.com", pageable );
+        System.out.println ( board.get().count());
+    }
+
 
     @Test
     public void 모든게시글가져오기() {
