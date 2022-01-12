@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.Param;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
@@ -56,7 +57,14 @@ public class BoardTest {
     public void 게시물내용검색() {
         Pageable pageable = PageRequest.of ( 0, 10, Sort.Direction.DESC, "id" );
         Page<Board> board = boardRepository.findByContentContaining ( "dd", pageable );
-        System.out.println ( board.get ().count () );
+        System.out.println (board.get().count());
+    }
+
+    @Test
+    public void 게시물_내용_제목_검색(){
+        Pageable pageable = PageRequest.of ( 0, 10, Sort.Direction.DESC, "id" );
+        Page<Board> board = boardRepository.findByContentContainingIgnoreCaseOrTitleContainingIgnoreCase("오늘","ㅇㅇㅇ", pageable);
+        System.out.println (board.get().count());
     }
 
     @Test
