@@ -21,6 +21,6 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     Page<Board> findByUserEmailContaining(String searchKeyword, Pageable pageable);
 
 
-    Page<Board> findByContentContainingIgnoreCaseOrTitleContainingIgnoreCase(String title, String content,Pageable pageable);
+    Page<Board> findByContentContainingOrTitleContainingOrUserEmailContaining(String title, String content,String email,Pageable pageable);
 
 }
