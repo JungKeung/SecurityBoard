@@ -9,7 +9,7 @@
 2) 로그인 및 로그아웃 기능 구현
 4) 게시글 등록, 수정, 삭제 기능 구현 
 5) 게시물 조회 기능 구현
-6) 게시물 검색 기능 구현
+6) 게시물 검색 기능 구현 (제목, 내용, 작성자, 제목+내용)
 
 ## 🔍 서비스 소개
 <h3> 1) 유저 회원가입 페이지 </h3>
@@ -20,6 +20,9 @@
 <img width="755" alt="3" src="https://user-images.githubusercontent.com/81599684/147435642-aadf5bc1-af60-4159-9572-8b66dc8430b2.png">
 <h3> 4) 게시물 상세 페이지 </h3>
 <img width="724" alt="11" src="https://user-images.githubusercontent.com/81599684/147468334-b732a082-0ef7-418b-ace6-977ffff99731.png">
+<h3> 5) 게시물 검색 기능 페이지 </h3>
+<img width="724" alt="11" src="https://user-images.githubusercontent.com/81599684/149275950-b4907abb-1edf-42b0-b667-1064b4ed48e7.png">
+
 
 ## 🔧 기술스택
 <h3> JavaScript(Jquery), Thymeleaf, Spring Boot(Java), Spring Security, JPA, MySql, Git <h3>
