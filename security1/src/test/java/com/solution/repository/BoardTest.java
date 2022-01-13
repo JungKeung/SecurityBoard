@@ -63,7 +63,7 @@ public class BoardTest {
     @Test
     public void 게시물_내용_제목_검색(){
         Pageable pageable = PageRequest.of ( 0, 10, Sort.Direction.DESC, "id" );
-        Page<Board> board = boardRepository.findByContentContainingIgnoreCaseOrTitleContainingIgnoreCase("오늘","ㅇㅇㅇ", pageable);
+        Page<Board> board = boardRepository.findByContentContainingOrTitleContainingOrUserEmailContaining("오늘","ㅇㅇㅇ","vv323@naver.com", pageable);
         System.out.println (board.get().count());
     }
 
