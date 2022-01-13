@@ -23,9 +23,14 @@
 
 
     <form th:action="@{/board/list}" method="get">
-        <input type="text" name="titleSearch" placeholder="제목를 검색해주세요">
-        <button type="submit">검색</button>
-
+        <select name="type">
+            <option id="titleSearch" value="1">제목</option>
+            <option id="contentSearch" value="2">내용</option>
+            <option id="nicknameSearch" value="3">작성자</option>
+            <option id="titleAndContentSearch" value="4">제목+내용</option>
+        </select>
+        <input type="text" name="keyword" value="">
+        <button type="submit" id="keywordSearchBtn">검색</button>
     </form>
     <br/>
     <br/>
@@ -59,7 +64,8 @@
 
         <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
             <a th:if="${page != nowPage}"
-               th:href="@{/board/list(page = ${page - 1}, titleSearch = ${param.titleSearch})}"
+               th:href="@{/board/list(page = ${page - 1}, type = ${param.type})}"
+
                th:text="${page}"></a>
             <strong th:if="${page == nowPage}" th:text="${page}" style="color: red"></strong>
         </th:block>
@@ -69,3 +75,5 @@
 </div>
 </body>
 </html>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="/js/boardList.js"></script>
