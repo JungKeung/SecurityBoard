@@ -11,8 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -120,21 +118,28 @@ public class BoardController {
 
     /**
      * 글 목록 가져오기
-     * @param titleSearch 제목 검색어
+     * @param type 제목,내용,작성자,제목+내용 검색어
      * @return board/boardList.html
      */
     @GetMapping("/board/list")
     public String getBoardList( Model model
             , @PageableDefault(page = 0, size =10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable
-            , String titleSearch) {
+            ,String type, String keyword) {
 
         // 페이징 처리를 하여 게시글 가져오기
         Page<Board> boards = null;
-        if(titleSearch == null) {
+        if(type == null) {
             boards = boardRepository.findAll(pageable);
-        } else { // 검색된 제목이 있는 경우
-            boards = boardRepository.findByTitleContaining(titleSearch, pageable);
+        } else if (type == "1") {
+            boards = boardRepository.findByTitleContaining(keyword ,pageable);
+        } else if (type == "2") {
+            boards = boardRepository.findByContentContaining(keyword, pageable);
+        } else if (type == "3") {
+            boards = boardRepository.findByUserEmailContaining(keyword, pageable);
+        } else {
+            boards = boardRepository.findByContentContainingOrTitleContainingOrUserEmailContaining(keyword,keyword,keyword,pageable);
         }
+
 
         // 페이징 처리를 위한 로직
         int nowPage = boards.getPageable().getPageNumber() + 1;
